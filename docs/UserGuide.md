@@ -148,6 +148,12 @@ Clears all entries from the address book.
 
 Format: `clear`
 
+### Listing all appointments : `listapp`  `[coming soon]`
+
+Show all the appointments in the appointment list currently.
+
+Format: `listapp`
+
 ### Exiting the program : `exit`
 
 Exits the program.
