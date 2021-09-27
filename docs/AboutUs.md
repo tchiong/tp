@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Chai Yew Meng
 
-<img src="images/necrowolf28.jpg" width="200px">
+<img src="images/necrowolf28.png" width="200px">
 
 [[github](https://github.com/NecroWolf28)]
 [[portfolio](team/johndoe.md)]
