@@ -142,6 +142,17 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Deleting an appointment: `delApp`
+
+* Deletes an appointment at the specified `INDEX`
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Format: delApp INDEX
+
+Examples:
+* `delApp 1`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
