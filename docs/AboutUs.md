@@ -21,13 +21,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Chen Yanyu
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/yalechen299.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/jYaleChen299)]
 [[portfolio](team/johndoe.md)]
 
-* Role: ..
-* Responsibilities: ..
+* Role: UI design and implementation
+* Responsibilities: Merging PRs and implement UI.
 
 ### Li Lehao
 
