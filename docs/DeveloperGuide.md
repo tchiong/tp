@@ -277,10 +277,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
 | `* * *`  | marketeer                                  | add appointments with clients  |                                                                        |
-| `* * *`  | marketeer                                  | delete appointments            | so that I can remove cancelled/finished appointments                   |
-| `* * *`  | new user                                   | view some example contacts     | so that I have an idea of what contact info will look like             |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
+| `* * *`  | marketeer                                  | delete appointments            | remove cancelled/finished appointments                                 |
+| `* * *`  | new user                                   | view some example contacts     | have an idea of what contact info will look like                       |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* *`   | marketeer		                            | list appointments with clients  | view and plan my week and meet clients in a timely manner             |
+| `* *`   | user		                                | view my list of contacts	      | see who is already inside and contact clients that are forgotten      |
 
 *{More to be added}*
 
@@ -323,7 +324,7 @@ Use case ends.
 
 **Extensions**
 
-* PB detects an error in date formatting.
+* 1a. PB detects an error in date formatting.
     * 1a1. PB displays an error message, showing an example of the correct format.
     
 	  Use case resumes at step 1.	
@@ -334,7 +335,49 @@ Use case ends.
         
         Use case ends.
 
+**Use case: List appointments**
 
+**MSS**
+
+1. User enters the list appointments command
+
+2. PB shows a list of all currently added appointments
+
+Use case ends.
+
+**Extensions**
+
+* 1a. PB detects that there are no appointments added
+    * 1a1. PB informs the user that there are no appointments added yet.
+	
+	  Use case ends.
+
+**Use case: Delete appointment**
+
+**MSS**
+
+1. User requests to list appointments
+
+2. PB shows list of appointments
+
+3. User enters the delete appointment command indicating the index of the appointment to be deleted
+
+4. PB deletes the appointment and displays a successful message. 
+
+Use case ends.
+
+**Extensions**
+
+* 1a. The list is empty
+    
+    Use case ends
+
+* 3a. PB detects that the inputted index is out of range
+    * 3a1. PB informs the user that the index is out of range.
+	 
+	 Use case resumes at step 2.
+		
+		
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -342,13 +385,14 @@ Use case ends.
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The system is not required to handle sending emails to contacts.
+5.  Users can see previously written commands in the same session.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
