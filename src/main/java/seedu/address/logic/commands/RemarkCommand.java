@@ -53,3 +53,4 @@ public class RemarkCommand extends Command {
             return false;
         }
     }
+}
