@@ -142,6 +142,17 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Adding an appointment: `addApp`
+
+Adds an appointment for the specified person with the date (dd-MM-yyyy),
+optional time field (24 hour eg. 1530) and description to the appointment list.
+
+Format: `addApp n/NAME d/DATE [t/Time] ds/DESCRIPTION`
+
+Examples:
+* `addApp n/John Doe d/14-12-2021 t/1400 ds/dicuss marketing strategies`
+creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
+
 ### Deleting an appointment: `delApp`
 
 * Deletes an appointment at the specified `INDEX`
