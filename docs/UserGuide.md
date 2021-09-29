@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+**PlaceBook (PB) is a desktop app for managing contacts and appointments, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).** If you can type fast, PB can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -147,11 +147,24 @@ Examples:
 Adds an appointment for the specified person with the date (dd-MM-yyyy),
 optional time field (24 hour eg. 1530) and description to the appointment list.
 
-Format: `addApp n/NAME d/DATE [t/Time] ds/DESCRIPTION`
+Format: `addApp n/NAME d/DATE [t/TIME] ds/DESCRIPTION`
 
 Examples:
 * `addApp n/John Doe d/14-12-2021 t/1400 ds/dicuss marketing strategies`
 creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
+
+### Editing an appointment: `editApp`
+
+Edits an existing appointment, rewriting all the data in the appointment.
+
+Format: `editApp [INDEX] n/NAME d/DATE [t/TIME] ds/DESCRIPTION`
+
+* Edits the appointment at the specified `INDEX`.
+* The details of the appointment will be changed accordingly.
+
+Examples:
+* `editApp 2 n/John Doe d/21-12-2021 t/1500 ds/dicuss marketing strategies`
+  edits the time of the above created appointment with John Doe to 21-12-2021 at 1500 hrs
 
 ### Deleting an appointment: `delApp`
 
@@ -169,6 +182,12 @@ Examples:
 Clears all entries from the address book.
 
 Format: `clear`
+
+### Listing all appointments : `listapp`  `[coming soon]`
+
+Show all the appointments in the appointment list currently.
+
+Format: `listapp`
 
 ### Exiting the program : `exit`
 
