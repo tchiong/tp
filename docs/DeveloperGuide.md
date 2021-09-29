@@ -257,13 +257,21 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
+* Marketing Professional
+* Meets many people everyday
+* Have to send a lot of emails
 * has a need to manage a significant number of contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+
+**Value proposition**: 
+Our product aims to ease the process of adding many addresses every day, 
+help to create template emails from the addresses and generate emails in batches for a target group of people. 
+The product also keeps track of appointments and in the future, we look to potentially link to gmail.
+
 
 
 ### User stories
