@@ -19,6 +19,7 @@ public class RemarkCommand extends Command {
             + "[REMARK]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             +  "Likes to swim.";
+
     public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
 
     private final Index index;
