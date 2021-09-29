@@ -276,6 +276,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | add a new person               |                                                                        |
 | `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | marketeer                                  | add appointments with clients  |                                                                        |
+| `* * *`  | marketeer                                  | delete appointments            | so that I can remove cancelled/finished appointments                   |
+| `* * *`  | new user                                   | view some example contacts     | so that I have an idea of what contact info will look like             |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 
@@ -283,16 +286,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `PlaceBook(PB)` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  PB shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+4.  PB deletes the person
 
     Use case ends.
 
@@ -304,9 +307,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. PB shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Add appointment**
+
+**MSS**
+
+1. User enters the add appointment command specifying the person, date and description of the appointment.
+
+2. PB creates the appointment and displays a successful message.
+
+Use case ends.
+
+**Extensions**
+
+* PB detects an error in date formatting.
+    * 1a1. PB displays an error message, showing an example of the correct format.
+    
+	  Use case resumes at step 1.	
+	
+    * 1b. PB does not have the specified person in the contact list
+	    
+	    * 1b1. PB informs the user that the person does not exist
+        
+        Use case ends.
+
 
 *{More to be added}*
 
