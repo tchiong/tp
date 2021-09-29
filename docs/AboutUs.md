@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Li Lehao
 
-<img src="images/LiLehao.png" width="200px">
+<img src="images/li-lehao.png" width="200px">
 
 [[github](https://github.com/Li-Lehao)] [[portfolio](team/johndoe.md)]
 
