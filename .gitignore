@@ -21,3 +21,4 @@ src/test/data/sandbox/
 .DS_Store
 docs/_site/
 .settings/org.eclipse.buildship.core.prefs
+.project
