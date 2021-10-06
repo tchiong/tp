@@ -16,16 +16,6 @@ public class Appointment {
     private LocalTime time;
 
     /**
-     * Creates an Appointment class without a specified time.
-     */
-    public Appointment(Person client, Address location, LocalDate date, String description) {
-        this.client = client;
-        this.location = location;
-        this.date = date;
-        this.description = description;
-    }
-
-    /**
      * Creates an Appointment class with a specified time.
      */
     public Appointment(Person client, Address location, LocalDate date, String description, LocalTime time) {
