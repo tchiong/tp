@@ -1,13 +1,12 @@
 package seedu.address.model.schedule;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
 
-import static java.util.Objects.requireNonNull;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 
 /**
  * A list of Appointments
