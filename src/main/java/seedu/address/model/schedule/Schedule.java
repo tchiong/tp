@@ -2,7 +2,7 @@ package seedu.address.model.schedule;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.schedule.Appointment;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 
 import java.util.Iterator;
@@ -55,4 +55,12 @@ public class Schedule implements Iterable<Appointment> {
     public int hashCode() {
         return appointmentList.hashCode();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Schedule // instanceof handles nulls
+                && appointmentList.equals(((Schedule) other).appointmentList));
+    }
+
 }
