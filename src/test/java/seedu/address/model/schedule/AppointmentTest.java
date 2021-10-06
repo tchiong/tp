@@ -6,9 +6,9 @@ import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
-
 import seedu.address.model.person.Address;
 
 public class AppointmentTest {
@@ -25,7 +25,8 @@ public class AppointmentTest {
         Appointment editedAliceAppointment = new Appointment(ALICE,
                 new Address("369 Geylang Street"),
                 LocalDate.of(2021, 12, 25),
-                "Talk about sales");
+                "Talk about sales",
+                LocalTime.of(21,30));
         assertFalse(ALICE_APPOINTMENT.equals(editedAliceAppointment));
     }
 }
