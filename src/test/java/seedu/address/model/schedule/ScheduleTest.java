@@ -5,6 +5,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 
 public class ScheduleTest {
