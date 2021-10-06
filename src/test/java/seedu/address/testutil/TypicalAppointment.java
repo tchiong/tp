@@ -15,7 +15,7 @@ public class TypicalAppointment {
             new Address("369 Tanjong Rhu"),
             LocalDate.of(2021, 12, 25),
             "Talk about sales",
-            LocalTime.of(21,30));
+            LocalTime.of(21, 30));
     public static final Appointment CARL_APPOINTMENT = new Appointment(CARL,
             new Address("Vivocity"),
             LocalDate.of(2021, 10, 31),

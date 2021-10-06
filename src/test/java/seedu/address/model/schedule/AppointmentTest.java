@@ -26,7 +26,7 @@ public class AppointmentTest {
                 new Address("369 Geylang Street"),
                 LocalDate.of(2021, 12, 25),
                 "Talk about sales",
-                LocalTime.of(21,30));
+                LocalTime.of(21, 30));
         assertFalse(ALICE_APPOINTMENT.equals(editedAliceAppointment));
     }
 }
