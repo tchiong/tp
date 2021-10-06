@@ -2,7 +2,7 @@ package seedu.address.model.schedule;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Appointment;
+import seedu.address.model.schedule.Appointment;
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 
 import java.util.Iterator;
