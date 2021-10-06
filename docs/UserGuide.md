@@ -147,7 +147,7 @@ Examples:
 Adds an appointment for the specified person with the date (dd-MM-yyyy),
 optional time field (24 hour eg. 1530) and description to the appointment list.
 
-Format: `addApp n/NAME d/DATE [t/TIME] ds/DESCRIPTION`
+Format: `addApp n/NAME d/DATE t/TIME ds/DESCRIPTION`
 
 Examples:
 * `addApp n/John Doe d/14-12-2021 t/1400 ds/dicuss marketing strategies`
