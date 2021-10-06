@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.person.Address;
 
 public class AppointmentTest {
@@ -21,10 +22,10 @@ public class AppointmentTest {
         assertFalse(ALICE_APPOINTMENT.equals(null));
 
         // same client, different attributes
-        Appointment editedAliceAppointment = new Appointment(ALICE
-                , new Address("369 Geylang Street")
-                , LocalDate.of(2021, 12, 25)
-                , "Talk about sales");
+        Appointment editedAliceAppointment = new Appointment(ALICE,
+                new Address("369 Geylang Street"),
+                LocalDate.of(2021, 12, 25),
+                "Talk about sales");
         assertFalse(ALICE_APPOINTMENT.equals(editedAliceAppointment));
     }
 }
