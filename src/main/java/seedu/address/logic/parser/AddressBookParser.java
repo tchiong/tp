@@ -70,7 +70,7 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case AddAppCommand.COMMAND_WORD:
-            return new AddAppCommand();
+            return new AddAppCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
