@@ -15,7 +15,7 @@ import seedu.address.logic.commands.AddAppCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 
-public class AddAppCommandParser implements Parser<AddAppCommand>{
+public class AddAppCommandParser implements Parser<AddAppCommand> {
 
     @Override
     public AddAppCommand parse(String args) throws ParseException {

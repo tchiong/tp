@@ -126,6 +126,12 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses a {@code String date} into a {@Code LocalDate}
+     * Leading and trailing whitespaces will be removed.
+     *
+     * @throws ParseException if the given {@Code LocalDate} is invalid
+     */
     public static LocalDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
@@ -137,6 +143,12 @@ public class ParserUtil {
         }
     }
 
+    /**
+     * Parses a {@code String time} into a {@Code LocalTime}
+     * Leading and trailing whitespaces will be removed.
+     *
+     * @throws ParseException if the given {@Code LocalTime} is invalid
+     */
     public static LocalTime parseTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
@@ -148,6 +160,9 @@ public class ParserUtil {
         }
     }
 
+    /**
+     * Parses a {@code String description} by removing leading and trailing whitespaces.
+     */
     public static String parseDescription(String description) {
         requireNonNull(description);
         String trimmedDescription = description.trim();

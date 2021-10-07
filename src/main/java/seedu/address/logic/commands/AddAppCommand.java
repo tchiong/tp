@@ -50,6 +50,14 @@ public class AddAppCommand extends Command {
     private final LocalTime time;
     private final String description;
 
+    /**
+     * Creates an AddAppCommand
+     * @param index The index of the person to be met during the appointment
+     * @param location The location of the appointment
+     * @param date The date of the appointment
+     * @param time The time of the appointment
+     * @param description The description of the appointment
+     */
     public AddAppCommand(Index index, Address location, LocalDate date, LocalTime time, String description) {
         requireNonNull(index);
         requireNonNull(location);
