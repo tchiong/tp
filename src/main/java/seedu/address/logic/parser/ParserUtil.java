@@ -2,6 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -120,5 +124,48 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String date} into a {@Code LocalDate}
+     * Leading and trailing whitespaces will be removed.
+     *
+     * @throws ParseException if the given {@Code LocalDate} is invalid
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            return LocalDate.parse(trimmedDate, formatter);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Date format should be dd-MM-yyyy");
+        }
+    }
+
+    /**
+     * Parses a {@code String time} into a {@Code LocalTime}
+     * Leading and trailing whitespaces will be removed.
+     *
+     * @throws ParseException if the given {@Code LocalTime} is invalid
+     */
+    public static LocalTime parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
+        try {
+            return LocalTime.parse(trimmedTime, formatter);
+        } catch (DateTimeParseException e) {
+            throw new ParseException("Time format should be HHMM");
+        }
+    }
+
+    /**
+     * Parses a {@code String description} by removing leading and trailing whitespaces.
+     */
+    public static String parseDescription(String description) {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        return trimmedDescription;
     }
 }

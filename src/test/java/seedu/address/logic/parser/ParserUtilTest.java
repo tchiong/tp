@@ -6,6 +6,9 @@ import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -33,8 +36,12 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_DATE = "04-10-2021";
+    private static final String VALID_TIME = "1430";
 
     private static final String WHITESPACE = " \t\r\n";
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HHmm");
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -192,5 +199,17 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseDate_validValueWithoutWhitespace_returnsLocalDate() throws Exception {
+        LocalDate expectedDate = LocalDate.parse(VALID_DATE, DATE_FORMATTER);
+        assertEquals(expectedDate, ParserUtil.parseDate(VALID_DATE));
+    }
+
+    @Test
+    public void parseTime_validValueWithoutWhitespace_returnsLocalTime() throws Exception {
+        LocalTime expectedTime = LocalTime.parse(VALID_TIME, TIME_FORMATTER);
+        assertEquals(expectedTime, ParserUtil.parseTime(VALID_TIME));
     }
 }
