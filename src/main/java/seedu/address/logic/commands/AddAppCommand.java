@@ -26,8 +26,6 @@ public class AddAppCommand extends Command {
 
     public static final String COMMAND_WORD = "addApp";
 
-    public static final String NOT_IMPLEMENTED_MESSAGE = "Command not implemented yet";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to PlaceBook. "
             + "Parameters: "
             + "INDEX "
