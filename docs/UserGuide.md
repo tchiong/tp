@@ -147,17 +147,17 @@ Examples:
 Adds an appointment for the specified person with the date (dd-MM-yyyy),
 optional time field (24 hour eg. 1530) and description to the appointment list.
 
-Format: `addApp n/NAME d/DATE t/TIME ds/DESCRIPTION`
+Format: `addApp INDEX a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 
 Examples:
-* `addApp n/John Doe d/14-12-2021 t/1400 ds/dicuss marketing strategies`
+* `addApp n/John Doe a/Starbucks @ Raffles City d/14-12-2021 t/1400 ds/discuss marketing strategies`
 creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
 
 ### Editing an appointment: `editApp`
 
 Edits an existing appointment, rewriting all the data in the appointment.
 
-Format: `editApp [INDEX] n/NAME d/DATE [t/TIME] ds/DESCRIPTION`
+Format: `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 
 * Edits the appointment at the specified `INDEX`.
 * The details of the appointment will be changed accordingly.
