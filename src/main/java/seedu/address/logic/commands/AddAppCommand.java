@@ -26,8 +26,6 @@ public class AddAppCommand extends Command {
 
     public static final String COMMAND_WORD = "addApp";
 
-    public static final String NOT_IMPLEMENTED_MESSAGE = "Command not implemented yet";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to PlaceBook. "
             + "Parameters: "
             + "INDEX "
@@ -84,12 +82,8 @@ public class AddAppCommand extends Command {
         Person client = lastShownList.get(index.getZeroBased());
         Appointment newAppointment = new Appointment(client, location, date, description, time);
 
-        // TODO
-        // model.addAppointment(newAppointment)
-        // return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
-
-        // Can remove once schedule is implemented
-        throw new CommandException(NOT_IMPLEMENTED_MESSAGE);
+        model.addAppointment(newAppointment);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
     }
 
     @Override
