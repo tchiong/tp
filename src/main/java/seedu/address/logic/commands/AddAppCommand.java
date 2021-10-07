@@ -84,12 +84,8 @@ public class AddAppCommand extends Command {
         Person client = lastShownList.get(index.getZeroBased());
         Appointment newAppointment = new Appointment(client, location, date, description, time);
 
-        // TODO
-        // model.addAppointment(newAppointment)
-        // return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
-
-        // Can remove once schedule is implemented
-        throw new CommandException(NOT_IMPLEMENTED_MESSAGE);
+        model.addAppointment(newAppointment);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
     }
 
     @Override

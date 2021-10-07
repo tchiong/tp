@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Appointment;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -112,6 +113,18 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void addAppointment(Appointment a) {
+        requireNonNull(a);
+        addressBook.addAppointment(a);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment a) {
+        requireNonNull(a);
+        addressBook.deleteAppointment(a);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -147,5 +160,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }
-
 }

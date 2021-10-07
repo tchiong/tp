@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -81,6 +82,12 @@ public class AddressBookTest {
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+    }
+
+    @Test
+    public void addAppointment() {
+        addressBook.addAppointment(ALICE_APPOINTMENT);
+        assertTrue(addressBook.hasAppointment(ALICE_APPOINTMENT));
     }
 
     /**
