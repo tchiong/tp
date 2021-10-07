@@ -45,6 +45,15 @@ public class Schedule implements Iterable<Appointment> {
         }
     }
 
+    /**
+     * Check if appointmentList contains {@code Appointment}
+     * @return boolean result
+     */
+    public boolean contains(Appointment toCheck) {
+        requireNonNull(toCheck);
+        return appointmentList.contains(toCheck);
+    }
+
     @Override
     public Iterator<Appointment> iterator() {
         return appointmentList.iterator();
