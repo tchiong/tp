@@ -120,9 +120,13 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteAppointment(Appointment a) {
-        requireNonNull(a);
-        addressBook.deleteAppointment(a);
+    public void deleteAppointment(int index) {
+        addressBook.deleteAppointment(index);
+    }
+
+    @Override
+    public Appointment getAppointment(int index) {
+        return addressBook.getAppointment(index);
     }
 
     //=========== Filtered Person List Accessors =============================================================

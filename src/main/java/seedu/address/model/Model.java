@@ -94,5 +94,12 @@ public interface Model {
     /**
      * Removes the given Appointment
      */
-    void deleteAppointment(Appointment a);
+    void deleteAppointment(int index);
+
+    /**
+     * Gets the appointment with the specified index
+     * @param index
+     * @return The appointment with the specified index
+     */
+    Appointment getAppointment(int index);
 }

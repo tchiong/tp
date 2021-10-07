@@ -45,6 +45,13 @@ public class Schedule implements Iterable<Appointment> {
         }
     }
 
+    public Appointment get(int index) {
+        if (appointmentList.size() <= index) {
+            throw new AppointmentNotFoundException();
+        }
+        return appointmentList.get(index);
+    }
+
     /**
      * Check if appointmentList contains {@code Appointment}
      * @return boolean result
