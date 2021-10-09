@@ -142,6 +142,21 @@
      -fx-border-top-width: 1px;
 }
 
+.titled_pane {
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+}
+
+.titled_pane > .title {
+    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-border-color: transparent;
+}
+
+.titled_pane > *.content  {
+    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-border-color: transparent;
+}
+
 .status-bar {
     -fx-background-color: derive(#1d1d1d, 30%);
 }
@@ -308,6 +323,11 @@
 }
 
 #cardPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+#appointmentCardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
 }
