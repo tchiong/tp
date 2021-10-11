@@ -15,6 +15,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -94,6 +97,7 @@ public interface Model {
     /**
      * Removes the given Appointment
      */
+<<<<<<< HEAD
     void deleteAppointment(int index);
 
     /**
@@ -102,4 +106,16 @@ public interface Model {
      * @return The appointment with the specified index
      */
     Appointment getAppointment(int index);
+=======
+    void deleteAppointment(Appointment a);
+
+    /** Returns an unmodifiable view of the filtered appointment list */
+    ObservableList<Appointment> getFilteredAppointmentList();
+
+    /**
+     * Updates the filter of the filtered appointments list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+>>>>>>> 9d6760e367bc6d3c455b6327d8314b242c1b8341
 }

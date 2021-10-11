@@ -6,7 +6,21 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+<<<<<<< HEAD
 import seedu.address.logic.commands.*;
+=======
+import seedu.address.logic.commands.AddAppCommand;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.ListAppCommand;
+import seedu.address.logic.commands.ListCommand;
+>>>>>>> 9d6760e367bc6d3c455b6327d8314b242c1b8341
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -63,8 +77,13 @@ public class AddressBookParser {
         case AddAppCommand.COMMAND_WORD:
             return new AddAppCommandParser().parse(arguments);
 
+<<<<<<< HEAD
         case DelAppCommand.COMMAND_WORD:
             return new DelAppCommandParser().parse(arguments);
+=======
+        case ListAppCommand.COMMAND_WORD:
+            return new ListAppCommand();
+>>>>>>> 9d6760e367bc6d3c455b6327d8314b242c1b8341
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
