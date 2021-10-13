@@ -10,9 +10,11 @@ import seedu.address.logic.commands.AddAppCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DelAppCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindAppCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAppCommand;
@@ -34,7 +36,7 @@ public class AddressBookParser {
      *
      * @param userInput full user input string
      * @return the command based on the user input
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
@@ -73,8 +75,14 @@ public class AddressBookParser {
         case AddAppCommand.COMMAND_WORD:
             return new AddAppCommandParser().parse(arguments);
 
+        case DelAppCommand.COMMAND_WORD:
+            return new DelAppCommandParser().parse(arguments);
+
         case ListAppCommand.COMMAND_WORD:
             return new ListAppCommand();
+
+        case FindAppCommand.COMMAND_WORD:
+            return new FindAppCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
