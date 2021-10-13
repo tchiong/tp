@@ -80,7 +80,7 @@ public class AddAppCommand extends Command {
         }
 
         Person client = lastShownList.get(index.getZeroBased());
-        Appointment newAppointment = new Appointment(client, location, date, description, time);
+        Appointment newAppointment = new Appointment(client, location, date, time, description);
 
         model.addAppointment(newAppointment);
         return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));

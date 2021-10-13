@@ -18,7 +18,7 @@ public class Appointment {
     /**
      * Creates an Appointment class with a specified time.
      */
-    public Appointment(Person client, Address location, LocalDate date, String description, LocalTime time) {
+    public Appointment(Person client, Address location, LocalDate date,  LocalTime time, String description) {
         this.client = client;
         this.location = location;
         this.date = date;
