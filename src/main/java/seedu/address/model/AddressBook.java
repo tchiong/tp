@@ -7,8 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.schedule.Appointment;
-import seedu.address.model.schedule.Schedule;
+
 
 /**
  * Wraps all data at the address-book level
@@ -17,7 +16,7 @@ import seedu.address.model.schedule.Schedule;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final Schedule appointments;
+    //private final Schedule appointments;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -28,7 +27,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        appointments = new Schedule();
+        //appointments = new Schedule();
     }
 
     public AddressBook() {}
@@ -99,28 +98,28 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// appointment-level operations
 
-    /**
-     * Adds an Appointment to the address book.
-     * Appointment must not already exist in the address book.
-     */
-    public void addAppointment(Appointment a) {
-        appointments.add(a);
-    }
+//    /**
+//     * Adds an Appointment to the address book.
+//     * Appointment must not already exist in the address book.
+//     */
+//    public void addAppointment(Appointment a) {
+//        appointments.add(a);
+//    }
+//
+//    /**
+//     * Removes Appointment from  the address book
+//     */
+//    public void deleteAppointment(Appointment a) {
+//        appointments.remove(a);
+//    }
 
-    /**
-     * Removes Appointment from  the address book
-     */
-    public void deleteAppointment(Appointment a) {
-        appointments.remove(a);
-    }
-
-    /**
-     * Returns true if a Appointment with the same identity as {@code appointment} exists in the address book.
-     */
-    public boolean hasAppointment(Appointment a) {
-        requireNonNull(a);
-        return appointments.contains(a);
-    }
+//    /**
+//     * Returns true if a Appointment with the same identity as {@code appointment} exists in the address book.
+//     */
+//    public boolean hasAppointment(Appointment a) {
+//        requireNonNull(a);
+//        return appointments.contains(a);
+//    }
 
     //// util methods
 
@@ -135,10 +134,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asUnmodifiableObservableList();
     }
 
-    @Override
-    public ObservableList<Appointment> getSchedule() {
-        return appointments.asUnmodifiableObservableList();
-    }
+//    @Override
+//    public ObservableList<Appointment> getSchedule() {
+//        return appointments.asUnmodifiableObservableList();
+//    }
 
     @Override
     public boolean equals(Object other) {
