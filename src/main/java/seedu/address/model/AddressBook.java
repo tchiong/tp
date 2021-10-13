@@ -110,7 +110,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Removes Appointment from the address book
      */
-    public void deleteAppointment(Appointment a) { appointments.remove(a); }
+    public void deleteAppointment(Appointment a) {
+        appointments.remove(a);
+    }
 
     public Appointment getAppointment(int index) {
         return appointments.get(index);
