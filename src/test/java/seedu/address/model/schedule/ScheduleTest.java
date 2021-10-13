@@ -15,29 +15,29 @@ public class ScheduleTest {
 
     @Test
     public void add_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> schedule.add(null));
+        assertThrows(NullPointerException.class, () -> schedule.addAppointment(null));
     }
 
     @Test
     public void add_existingPerson() {
-        schedule.add(ALICE_APPOINTMENT);
+        schedule.addAppointment(ALICE_APPOINTMENT);
         assertTrue(schedule.contains(ALICE_APPOINTMENT));
     }
 
     @Test
     public void remove_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> schedule.remove(null));
+        assertThrows(NullPointerException.class, () -> schedule.deleteAppointment(null));
     }
 
     @Test
     public void remove_personDoesNotExist_throwsPersonNotFoundException() {
-        assertThrows(AppointmentNotFoundException.class, () -> schedule.remove(ALICE_APPOINTMENT));
+        assertThrows(AppointmentNotFoundException.class, () -> schedule.deleteAppointment(ALICE_APPOINTMENT));
     }
 
     @Test
     public void remove_existingPerson_removesPerson() {
-        schedule.add(ALICE_APPOINTMENT);
-        schedule.remove(ALICE_APPOINTMENT);
+        schedule.addAppointment(ALICE_APPOINTMENT);
+        schedule.deleteAppointment(ALICE_APPOINTMENT);
         Schedule expectedSchedule = new Schedule();
         assertEquals(expectedSchedule, schedule);
     }
