@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -85,12 +84,6 @@ public class AddressBookTest {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
     }
 
-    @Test
-    public void addAppointment() {
-        addressBook.addAppointment(ALICE_APPOINTMENT);
-        assertTrue(addressBook.hasAppointment(ALICE_APPOINTMENT));
-    }
-
     /**
      * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
      */
@@ -105,11 +98,6 @@ public class AddressBookTest {
         @Override
         public ObservableList<Person> getPersonList() {
             return persons;
-        }
-
-        @Override
-        public ObservableList<Appointment> getSchedule() {
-            return appointments;
         }
     }
 
