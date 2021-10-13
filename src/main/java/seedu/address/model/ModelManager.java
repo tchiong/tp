@@ -160,6 +160,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredAppointments.setPredicate(predicate);
     }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
