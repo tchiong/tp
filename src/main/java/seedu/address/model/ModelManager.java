@@ -95,6 +95,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ReadOnlySchedule getSchedule() {
+        return schedule;
+    }
+
+    @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
