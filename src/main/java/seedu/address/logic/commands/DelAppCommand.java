@@ -28,12 +28,8 @@ public class DelAppCommand extends Command {
     private final Index index;
 
     /**
-     * Creates an AddAppCommand
-     * @param index The index of the person to be met during the appointment
-    //     * @param location The location of the appointment
-    //     * @param date The date of the appointment
-    //     * @param time The time of the appointment
-    //     * @param description The description of the appointment
+     * Creates an DelAppCommand
+     * @param index The index of the appointment to be deleted
      */
     public DelAppCommand(Index index) {
         requireNonNull(index);

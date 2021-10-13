@@ -121,12 +121,6 @@ public class ModelManager implements Model {
         addressBook.addAppointment(a);
     }
 
-
-    @Override
-    public Appointment getAppointment(int index) {
-        return addressBook.getAppointment(index);
-    }
-
     @Override
     public void deleteAppointment(Appointment a) {
         requireNonNull(a);

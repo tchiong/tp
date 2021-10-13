@@ -99,14 +99,6 @@ public interface Model {
      */
     void deleteAppointment(Appointment a);
 
-    /**
-     * Gets the appointment with the specified index
-     * @param index
-     * @return The appointment with the specified index
-     */
-    Appointment getAppointment(int index);
-
-
     /** Returns an unmodifiable view of the filtered appointment list */
     ObservableList<Appointment> getFilteredAppointmentList();
 

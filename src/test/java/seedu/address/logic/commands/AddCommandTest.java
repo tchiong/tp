@@ -159,9 +159,6 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public Appointment getAppointment(int index) { throw new AssertionError("This method should not be called."); }
-
         public ObservableList<Appointment> getFilteredAppointmentList() {
             throw new AssertionError("This method should not be called.");
         }
