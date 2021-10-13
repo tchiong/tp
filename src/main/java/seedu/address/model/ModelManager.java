@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Appointment;
+import seedu.address.model.schedule.Schedule;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,13 +23,14 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+    private final Schedule schedule;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlySchedule schedule) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -36,12 +38,13 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.schedule = new Schedule(schedule);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        filteredAppointments = new FilteredList<>(this.addressBook.getSchedule());
+        filteredAppointments = new FilteredList<>(this.schedule.getSchedule());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new Schedule());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -118,13 +121,13 @@ public class ModelManager implements Model {
     @Override
     public void addAppointment(Appointment a) {
         requireNonNull(a);
-        addressBook.addAppointment(a);
+        schedule.addAppointment(a);
     }
 
     @Override
     public void deleteAppointment(Appointment a) {
         requireNonNull(a);
-        addressBook.deleteAppointment(a);
+        schedule.deleteAppointment(a);
     }
 
     //=========== Filtered Person List Accessors =============================================================
