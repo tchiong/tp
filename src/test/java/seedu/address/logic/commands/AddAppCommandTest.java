@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
@@ -36,7 +37,7 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_validAppointment_returnsMESSAGE_SUCCESS() throws Exception {
+    public void execute_validAppointment_returnSuccess() throws Exception {
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         Appointment validAppointment = new AppointmentBuilder().build();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
@@ -52,7 +53,7 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_invalidAppointment_returnsMESSAGE_INVALID() {
+    public void execute_invalidAppointment_returnInvalid() {
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
         Command commandResult = new AddAppCommand(
