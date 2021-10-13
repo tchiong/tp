@@ -114,10 +114,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         appointments.remove(a);
     }
 
-    public Appointment getAppointment(int index) {
-        return appointments.get(index);
-    }
-
     /**
      * Returns true if a Appointment with the same identity as {@code appointment} exists in the address book.
      */
