@@ -129,6 +129,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteAppointment(Appointment a) {
+        requireNonNull(a);
         addressBook.deleteAppointment(a);
     }
 

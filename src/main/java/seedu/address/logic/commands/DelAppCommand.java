@@ -1,23 +1,14 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Appointment;
+
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
 
 /**
  * Deletes an existing appointment in the schedule
@@ -56,7 +47,7 @@ public class DelAppCommand extends Command {
         List<Appointment> lastShownList = model.getFilteredAppointmentList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
         }
 
         Appointment appointmentToDelete = lastShownList.get(index.getZeroBased());
