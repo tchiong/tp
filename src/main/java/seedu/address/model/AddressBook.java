@@ -108,7 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes Appointment from  the address book
+     * Removes Appointment from the address book
      */
     public void deleteAppointment(Appointment a) {
         appointments.remove(a);

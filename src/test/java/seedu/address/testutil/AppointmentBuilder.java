@@ -9,46 +9,46 @@ import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Appointment;
 
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Appointment Objects.
  */
 public class AppointmentBuilder {
-
-    public static final Person DEFAULT_PERSON = new PersonBuilder().build();
-    public static final String DEFAULT_DESCRIPTION = "Team Meeting";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final LocalDate DEFAULT_DATE = LocalDate.of(2020, 12, 15);
-    public static final LocalTime DEFAULT_TIME = LocalTime.of(20, 30);
+    private static final String DEFAULT_CLIENT = "ALICE";
+    private static final String DEFAULT_LOCATION = "vivocity";
+    private static final String DEFAULT_DATE = "01-01-2021";
+    private static final String DEFAULT_TIME = "1800";
+    private static final String DEFAULT_DESCRIPTION = "Halloween Sales";
 
     private Person client;
-    private String description;
     private Address location;
     private LocalDate date;
     private LocalTime time;
+    private String description;
 
     /**
-     * Creates a {@code AppointmentBuilder} with the default details.
+     * Creates a {@code} AppointmentBuilder with the default details.
      */
     public AppointmentBuilder() {
-        client = DEFAULT_PERSON;
-        description = DEFAULT_DESCRIPTION;
-        location = new Address(DEFAULT_ADDRESS);
-        date = DEFAULT_DATE;
-        time = DEFAULT_TIME;
+        this.client = new PersonBuilder().withName(DEFAULT_CLIENT).build();
+        this.location = new Address(DEFAULT_LOCATION);
+        this.date = LocalDate.parse(DEFAULT_DATE, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        this.time = LocalTime.parse(DEFAULT_TIME, DateTimeFormatter.ofPattern("HHmm"));
+        this.description = DEFAULT_DESCRIPTION;
     }
 
     /**
      * Initializes the AppointmentBuilder with the data of {@code appointmentToCopy}.
+     * @param appointmentToCopy The given appointment to copy.
      */
     public AppointmentBuilder(Appointment appointmentToCopy) {
-        client = appointmentToCopy.getClient();
-        description = appointmentToCopy.getDescription();
-        location = appointmentToCopy.getLocation();
-        date = appointmentToCopy.getDate();
-        time = appointmentToCopy.getTime();
+        this.client = appointmentToCopy.getClient();
+        this.location = appointmentToCopy.getLocation();
+        this.date = appointmentToCopy.getDate();
+        this.time = appointmentToCopy.getTime();
+        this.description = appointmentToCopy.getDescription();
     }
 
     /**
-     * Sets the {@code Person} of the {@code Appointment} that we are building.
+     * Sets the {@code client} of the {@code Appointment} that we are building.
      */
     public AppointmentBuilder withClient(Person client) {
         this.client = client;
@@ -56,7 +56,15 @@ public class AppointmentBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Appointment} that we are building.
+     * Sets the {@code client} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withClient(String clientName) {
+        this.client = new PersonBuilder().withName(clientName).build();
+        return this;
+    }
+
+    /**
+     * Sets the {@code location} of the {@code Appointment} that we are building.
      */
     public AppointmentBuilder withLocation(String location) {
         this.location = new Address(location);
@@ -64,33 +72,30 @@ public class AppointmentBuilder {
     }
 
     /**
-     * Sets the {@code Description} of the {@code Appointment} that we are building.
+     * Sets the {@code date} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withDate(String date) {
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return this;
+    }
+
+    /**
+     * Sets the {@code time} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder withTime(String time) {
+        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HHmm"));
+        return this;
+    }
+
+    /**
+     * Sets the {@code description} of the {@code Appointment} that we are building.
      */
     public AppointmentBuilder withDescription(String description) {
         this.description = description;
         return this;
     }
 
-    /**
-     * Sets the {@code Date} of the {@code Appointment} that we are building.
-     */
-    public AppointmentBuilder withDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        this.date = LocalDate.parse(date, formatter);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Time} of the {@code Appointment} that we are building.
-     */
-    public AppointmentBuilder withTime(String time) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
-        this.time = LocalTime.parse(time, formatter);
-        return this;
-    }
-
     public Appointment build() {
         return new Appointment(client, location, date, description, time);
     }
-
 }
