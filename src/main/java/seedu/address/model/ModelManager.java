@@ -121,14 +121,15 @@ public class ModelManager implements Model {
         addressBook.addAppointment(a);
     }
 
-    @Override
-    public void deleteAppointment(int index) {
-        addressBook.deleteAppointment(index);
-    }
 
     @Override
     public Appointment getAppointment(int index) {
         return addressBook.getAppointment(index);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment a) {
+        addressBook.deleteAppointment(a);
     }
 
     //=========== Filtered Person List Accessors =============================================================

@@ -97,8 +97,7 @@ public interface Model {
     /**
      * Removes the given Appointment
      */
-<<<<<<< HEAD
-    void deleteAppointment(int index);
+    void deleteAppointment(Appointment a);
 
     /**
      * Gets the appointment with the specified index
@@ -106,8 +105,7 @@ public interface Model {
      * @return The appointment with the specified index
      */
     Appointment getAppointment(int index);
-=======
-    void deleteAppointment(Appointment a);
+
 
     /** Returns an unmodifiable view of the filtered appointment list */
     ObservableList<Appointment> getFilteredAppointmentList();
@@ -117,5 +115,4 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
->>>>>>> 9d6760e367bc6d3c455b6327d8314b242c1b8341
 }

@@ -53,14 +53,14 @@ public class DelAppCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Appointment> lastShownList = model.getFilteredAppointmentList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Appointment appointmentToDelete = model.getAppointment(index.getZeroBased());
-        model.deleteAppointment(index.getZeroBased());
+        Appointment appointmentToDelete = lastShownList.get(index.getZeroBased());
+        model.deleteAppointment(appointmentToDelete);
         return new CommandResult(String.format(MESSAGE_SUCCESS, appointmentToDelete));
     }
 
