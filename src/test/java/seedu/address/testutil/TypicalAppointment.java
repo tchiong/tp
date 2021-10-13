@@ -3,15 +3,11 @@ package seedu.address.testutil;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.CARL;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.AddressBookTest;
-import seedu.address.model.person.Address;
 import seedu.address.model.schedule.Appointment;
 
 public class TypicalAppointment {
@@ -37,14 +33,14 @@ public class TypicalAppointment {
 
     public static AddressBook getTypicalAddressBook() {
         AddressBook addressBook = new AddressBook();
-        for(Appointment appointment : getTypicalAppointments()) {
+        for (Appointment appointment : getTypicalAppointments()) {
             addressBook.addAppointment(appointment);
         }
         return addressBook;
     }
 
     public static AddressBook getTypicalAddressBook(AddressBook addressBook) {
-        for(Appointment appointment : getTypicalAppointments()) {
+        for (Appointment appointment : getTypicalAppointments()) {
             addressBook.addAppointment(appointment);
         }
         return addressBook;

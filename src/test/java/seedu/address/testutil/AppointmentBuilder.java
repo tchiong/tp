@@ -1,12 +1,12 @@
 package seedu.address.testutil;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Person;
-import seedu.address.model.schedule.Appointment;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Person;
+import seedu.address.model.schedule.Appointment;
 
 /**
  * A utility class to help with building Appointment Objects.
