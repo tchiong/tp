@@ -4,11 +4,17 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
+import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
@@ -21,13 +27,6 @@ import seedu.address.model.schedule.Appointment;
 import seedu.address.testutil.AppointmentBuilder;
 import seedu.address.testutil.PersonBuilder;
 
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
-
 public class AddAppCommandTest {
 
     @Test
@@ -37,7 +36,7 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_validAppointment_returnsMESSAGE_SUCCESS() throws Exception  {
+    public void execute_validAppointment_returnsMESSAGE_SUCCESS() throws Exception {
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         Appointment validAppointment = new AppointmentBuilder().build();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
@@ -64,7 +63,7 @@ public class AddAppCommandTest {
                 "Halloween Sales");
 
         assertThrows(CommandException.class, ()
-                -> commandResult.execute(modelStub));
+            -> commandResult.execute(modelStub));
     }
 
     private class ModelStub implements Model {
