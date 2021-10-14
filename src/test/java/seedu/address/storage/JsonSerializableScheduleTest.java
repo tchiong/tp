@@ -37,5 +37,4 @@ public class JsonSerializableScheduleTest {
         assertThrows(IllegalValueException.class, JsonSerializableSchedule.MESSAGE_DUPLICATE_APPOINTMENT,
                 dataFromFile::toModelType);
     }
-
 }
