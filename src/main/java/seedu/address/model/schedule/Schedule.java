@@ -9,9 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.ReadOnlySchedule;
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
+import seedu.address.model.schedule.exceptions.DuplicateAppointmentException;
 
 /**
- * A list of Appointments
+ * A list of Appointments that enforces uniqueness among appointments to be added
  *
  * Supports a minimal set of list operations.
  */
@@ -57,9 +58,13 @@ public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
 
     /**
      * Adds an Appointment to the list.
+     * Appointment Must not already be in the list
      */
     public void addAppointment(Appointment toAdd) {
         requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateAppointmentException();
+        }
         appointmentList.add(toAdd);
     }
 
