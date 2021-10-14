@@ -93,6 +93,6 @@ public class JsonAdaptedAppointment {
         int minute = Integer.parseInt(timeArgs[1]);
         final LocalTime modelTime = LocalTime.of(hour, minute);
 
-        return new Appointment(modelClient, modelLocation, modelDate, modelDescription, modelTime);
+        return new Appointment(modelClient, modelLocation, modelDate, modelTime, modelDescription);
     }
 }

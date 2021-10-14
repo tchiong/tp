@@ -1,0 +1,27 @@
+{
+  "appointments" : [ {
+    "client" : {
+      "name" : "Alice Pauline",
+      "phone" : "94351253",
+      "email" : "alice@example.com",
+      "address" : "123, Jurong West Ave 6, #08-111",
+      "tagged" : [ "friends" ]
+    },
+    "location" : "369 Tanjong Rhu",
+    "date" : "2021-12-25",
+    "description" : "Talk about sales",
+    "time" : "21:30"
+  }, {
+    "client" : {
+      "name" : "Alice Pauline",
+      "phone" : "94351253",
+      "email" : "alice@example.com",
+      "address" : "123, Jurong West Ave 6, #08-111",
+      "tagged" : [ "friends" ]
+    },
+    "location" : "369 Tanjong Rhu",
+    "date" : "2021-12-25",
+    "description" : "Talk about sales",
+    "time" : "21:30"
+  } ]
+}

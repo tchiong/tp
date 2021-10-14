@@ -8,6 +8,7 @@ import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
+import seedu.address.model.schedule.exceptions.DuplicateAppointmentException;
 
 public class ScheduleTest {
 
@@ -19,11 +20,16 @@ public class ScheduleTest {
     }
 
     @Test
-    public void add_existingPerson() {
+    public void add_unique_existingAppointment() {
         schedule.addAppointment(ALICE_APPOINTMENT);
         assertTrue(schedule.contains(ALICE_APPOINTMENT));
     }
 
+    @Test
+    public void add_duplicate_existingAppointment() {
+        schedule.addAppointment(ALICE_APPOINTMENT);
+        assertThrows(DuplicateAppointmentException.class, () -> schedule.addAppointment(ALICE_APPOINTMENT));
+    }
     @Test
     public void remove_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> schedule.deleteAppointment(null));
