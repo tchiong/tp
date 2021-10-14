@@ -3,9 +3,11 @@ package seedu.address.model.schedule;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.ReadOnlySchedule;
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 
 /**
@@ -13,11 +15,38 @@ import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
  *
  * Supports a minimal set of list operations.
  */
-public class Schedule implements Iterable<Appointment> {
+public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
     // Data Fields
     private final ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
     private final ObservableList<Appointment> appointmentListUnModifiable =
             FXCollections.unmodifiableObservableList(appointmentList);
+
+    public Schedule() {};
+
+    /**
+     * Creates an Schedule using the Appointments in the {@code toBeCopied}
+     */
+    public Schedule(ReadOnlySchedule toBeCopied) {
+        this();
+        resetData(toBeCopied);
+    }
+
+    /**
+     * Replaces the contents of the person list with {@code appointments}.
+     * {@code appointments} must not contain duplicate persons.
+     */
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointmentList.setAll(appointments);
+    }
+
+    /**
+     * Resets the existing data of this {@code Schedule} with {@code newData}.
+     */
+    public void resetData(ReadOnlySchedule newData) {
+        requireNonNull(newData);
+
+        setAppointments(newData.getSchedule());
+    }
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
@@ -29,7 +58,7 @@ public class Schedule implements Iterable<Appointment> {
     /**
      * Adds an Appointment to the list.
      */
-    public void add(Appointment toAdd) {
+    public void addAppointment(Appointment toAdd) {
         requireNonNull(toAdd);
         appointmentList.add(toAdd);
     }
@@ -38,7 +67,7 @@ public class Schedule implements Iterable<Appointment> {
      * Removes the equivalent Appointment from the list.
      * The Appointment must exist in the list.
      */
-    public void remove(Appointment toRemove) {
+    public void deleteAppointment(Appointment toRemove) {
         requireNonNull(toRemove);
         if (!appointmentList.remove(toRemove)) {
             throw new AppointmentNotFoundException();
@@ -71,4 +100,8 @@ public class Schedule implements Iterable<Appointment> {
                 && appointmentList.equals(((Schedule) other).appointmentList));
     }
 
+    @Override
+    public ObservableList<Appointment> getSchedule() {
+        return appointmentList;
+    }
 }

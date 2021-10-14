@@ -9,6 +9,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.schedule.Schedule;
 import seedu.address.testutil.TypicalAppointment;
 import seedu.address.testutil.TypicalPersons;
 
@@ -19,14 +20,10 @@ class ListAppCommandTest {
 
     @BeforeEach
     public void setUp() {
-        AddressBook typicalAddressBookWithPersons = TypicalPersons.getTypicalAddressBook();
-        AddressBook typicalAddressBookWithPersonsAndAppointments = TypicalAppointment.getTypicalAddressBook(
-                typicalAddressBookWithPersons
-        );
-        model = new ModelManager(
-                typicalAddressBookWithPersonsAndAppointments,
-                new UserPrefs());
-        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        AddressBook addressBook = TypicalPersons.getTypicalAddressBook();
+        Schedule schedule = TypicalAppointment.getTypicalSchedule();
+        model = new ModelManager(addressBook, new UserPrefs(), schedule);
+        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getSchedule());
     }
 
     @Test

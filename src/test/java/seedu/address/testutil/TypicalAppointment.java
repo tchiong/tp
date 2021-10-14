@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
 import seedu.address.model.schedule.Appointment;
+import seedu.address.model.schedule.Schedule;
 
 public class TypicalAppointment {
     public static final Appointment ALICE_APPOINTMENT = new AppointmentBuilder()
@@ -31,18 +31,18 @@ public class TypicalAppointment {
         return new ArrayList<>(Arrays.asList(ALICE_APPOINTMENT, CARL_APPOINTMENT));
     }
 
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook addressBook = new AddressBook();
+    public static Schedule getTypicalSchedule() {
+        Schedule schedule = new Schedule();
         for (Appointment appointment : getTypicalAppointments()) {
-            addressBook.addAppointment(appointment);
+            schedule.addAppointment(appointment);
         }
-        return addressBook;
+        return schedule;
     }
 
-    public static AddressBook getTypicalAddressBook(AddressBook addressBook) {
+    public static Schedule getTypicalSchedule(Schedule schedule) {
         for (Appointment appointment : getTypicalAppointments()) {
-            addressBook.addAppointment(appointment);
+            schedule.addAppointment(appointment);
         }
-        return addressBook;
+        return schedule;
     }
 }
