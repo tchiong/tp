@@ -183,12 +183,13 @@ Clears all entries from the PlaceBook.
 
 Format: `clear`
 
-### Listing all appointments : `listapp`  `[coming soon]`
+### Listing all appointments : `listapp` 
 
 Show all the appointments in the appointment list currently.
-List is sorted by Date, Time and Description
+List is sorted by Date, Time and Description baseline. Can optionally add a condition
+to sort List by, if an invalid condition is input, it will sort by baseline conditions
 
-Format: `listapp`
+Format: `listapp` Optional: `listapp Date` or `listapp Description`
 
 ### Exiting the program : `exit`
 

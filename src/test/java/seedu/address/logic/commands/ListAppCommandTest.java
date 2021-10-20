@@ -28,12 +28,12 @@ class ListAppCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListAppCommand(), model, ListAppCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListAppCommand(""), model, ListAppCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         model.updateFilteredAppointmentList(x -> false);
-        assertCommandSuccess(new ListAppCommand(), model, ListAppCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListAppCommand(""), model, ListAppCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
