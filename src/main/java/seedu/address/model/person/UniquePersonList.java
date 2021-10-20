@@ -105,6 +105,12 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     @Override
+    public String toString() {
+        return internalList.stream().reduce(
+            "", (names, person) -> names + person.getName().fullName + ", ", String::concat);
+    }
+
+    @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();
     }

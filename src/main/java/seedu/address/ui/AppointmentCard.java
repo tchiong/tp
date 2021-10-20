@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.schedule.Appointment;
 
 /**
@@ -32,7 +32,7 @@ public class AppointmentCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private TitledPane person;
+    private TitledPane clientsPane;
     @FXML
     private Label address;
     @FXML
@@ -50,11 +50,12 @@ public class AppointmentCard extends UiPart<Region> {
         address.setText(appointment.getLocation().value);
         date.setText(appointment.getDate().toString());
         time.setText(appointment.getTime().toString());
-        Person client = appointment.getClients().asUnmodifiableObservableList().get(0);
-        PersonCard clientDetail = new PersonCard(client, 0);
-        // TODO: think about displayIndex when reusing PersonCard
-        person.setText(client.getName().fullName);
-        person.setContent(clientDetail.getRoot());
+
+        UniquePersonList clients = appointment.getClients();
+        PersonListPanel clientsDetail = new PersonListPanel(clients.asUnmodifiableObservableList());
+        String clientNames = clients.toString();
+        clientsPane.setText(clientNames);
+        clientsPane.setContent(clientsDetail.getRoot());
     }
 
     @Override
@@ -72,6 +73,6 @@ public class AppointmentCard extends UiPart<Region> {
         // state check
         AppointmentCard card = (AppointmentCard) other;
         return id.getText().equals(card.id.getText())
-                && person.equals(card.person);
+                && clientsPane.equals(card.clientsPane);
     }
 }
