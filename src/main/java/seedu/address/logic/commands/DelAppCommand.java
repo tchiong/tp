@@ -9,6 +9,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.schedule.Appointment;
+import seedu.address.ui.UiManager;
 
 /**
  * Deletes an existing appointment in the schedule
@@ -47,8 +48,14 @@ public class DelAppCommand extends Command {
         }
 
         Appointment appointmentToDelete = lastShownList.get(index.getZeroBased());
-        model.deleteAppointment(appointmentToDelete);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, appointmentToDelete));
+        String deleteWarning = "You are about to delete:\n" + appointmentToDelete;
+
+        if (UiManager.showDeleteDialogAndWait(deleteWarning)) {
+            model.deleteAppointment(appointmentToDelete);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, appointmentToDelete));
+        } else {
+            return new CommandResult("No appointment deleted.");
+        }
     }
 
 
