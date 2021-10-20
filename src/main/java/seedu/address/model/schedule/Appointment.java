@@ -46,6 +46,11 @@ public class Appointment {
         return time;
     }
 
+    public boolean hasClient(Person person) {
+        // to be modified to accommodate list of clients
+        return this.client.equals(person);
+    }
+
     /**
      * Returns true if both Appointments have the same fields.
      */

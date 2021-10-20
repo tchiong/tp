@@ -3,12 +3,16 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Optional;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.ui.UiManager;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
@@ -23,6 +27,9 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+
+    public static final String MESSAGE_DELETE_PERSON_WARNING =
+            "The following appointments related to the client will be deleted as well:\n";
 
     private final Index targetIndex;
 
@@ -40,8 +47,15 @@ public class DeleteCommand extends Command {
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
+        String relatedAppointment = MESSAGE_DELETE_PERSON_WARNING
+                + model.getRelatedAppointmentsAsString(personToDelete);
+
+        if (UiManager.showDeleteDialogAndWait(relatedAppointment)) {
+            model.deletePerson(personToDelete);
+            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
+        } else {
+            return new CommandResult("No person deleted.");
+        }
     }
 
     @Override

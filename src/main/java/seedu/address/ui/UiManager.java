@@ -1,10 +1,12 @@
 package seedu.address.ui;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import seedu.address.MainApp;
@@ -84,6 +86,23 @@ public class UiManager implements Ui {
         showAlertDialogAndWait(Alert.AlertType.ERROR, title, e.getMessage(), e.toString());
         Platform.exit();
         System.exit(1);
+    }
+
+    /**
+     * Shows a confirmation dialog to confirm the deletion of an object
+     */
+    public static boolean showDeleteDialogAndWait(String contentText) {
+        final Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.getDialogPane().getStylesheets().add("view/DarkTheme.css");
+        // to be adjust later
+        // can try alert.setDialogPane();
+        alert.setHeight(500);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to delete?");
+        alert.setContentText(contentText);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.orElseGet(() -> ButtonType.CANCEL) == ButtonType.OK;
     }
 
 }

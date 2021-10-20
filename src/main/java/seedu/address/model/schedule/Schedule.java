@@ -4,10 +4,12 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.ReadOnlySchedule;
+import seedu.address.model.person.Person;
 import seedu.address.model.schedule.exceptions.AppointmentNotFoundException;
 import seedu.address.model.schedule.exceptions.DuplicateAppointmentException;
 
@@ -77,6 +79,17 @@ public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
         if (!appointmentList.remove(toRemove)) {
             throw new AppointmentNotFoundException();
         }
+    }
+
+    /**
+     * Returns the list of {@Code Appointment} that is related to the {@Code Person}
+     */
+    public List<Appointment> getRelatedAppointments(Person client) {
+        return appointmentListUnModifiable
+                .stream()
+                .parallel()
+                .filter(appointment -> appointment.hasClient(client))
+                .collect(Collectors.toList());
     }
 
     /**

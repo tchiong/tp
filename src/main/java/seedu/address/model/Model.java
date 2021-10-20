@@ -110,4 +110,12 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+    /**
+     * Returns the String representation of {@Code Appointment} that is related to the {@Code Person}
+     *
+     * @param client the person to search
+     * @return the String representation of the list of appointments related to the client.
+     */
+    String getRelatedAppointmentsAsString(Person client);
 }
