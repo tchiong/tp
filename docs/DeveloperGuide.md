@@ -326,7 +326,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User enters the add appointment command specifying the person, date and description of the appointment.
+1. User enters the add appointment command specifying the person or persons, date and description of the appointment.
 
 2. PB creates the appointment and displays a successful message.
 
@@ -360,7 +360,7 @@ Use case ends.
 * 1a. PB detects that there are no appointments added
     * 1a1. PB informs the user that there are no appointments added yet.
 	
-	  Use case ends.
+      Use case ends.
 
 **Use case: Delete appointment**
 
