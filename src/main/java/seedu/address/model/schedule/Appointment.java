@@ -53,6 +53,16 @@ public class Appointment {
     }
 
     /**
+     * Checks if this appointment is related to the client.
+     * @param person the client to check with.
+     * @return true if the client is related and false otherwise.
+     */
+    public boolean hasClient(Person person) {
+        // to be modified to accommodate list of clients
+        return this.clients.contains(person);
+    }
+
+    /**
      * Returns true if both Appointments have the same fields.
      */
     @Override

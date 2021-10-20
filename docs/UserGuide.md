@@ -151,7 +151,7 @@ appointment list.
 Format: `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 
 Examples:
-* `addApp n/John Doe a/Starbucks @ Raffles City d/14-12-2021 t/1400 ds/discuss marketing strategies`
+* `addApp 2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
 creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
 
 ### Editing an appointment: `editApp`
@@ -184,11 +184,13 @@ Clears all entries from the PlaceBook.
 
 Format: `clear`
 
-### Listing all appointments : `listapp`  `[coming soon]`
+### Listing all appointments : `listapp` 
 
 Show all the appointments in the appointment list currently.
+List is sorted by Date, Time and Description baseline. Can optionally add a condition
+to sort List by, if an invalid condition is input, it will sort by baseline conditions
 
-Format: `listapp`
+Format: `listapp` Optional: `listapp Date` or `listapp Description`
 
 ### Exiting the program : `exit`
 

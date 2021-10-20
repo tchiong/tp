@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -135,6 +136,28 @@ public class ModelManager implements Model {
         schedule.deleteAppointment(a);
     }
 
+    //=========== Query Operations =============================================================
+
+    /**
+     * Returns the String representation of {@Code Appointment} that is related to the {@Code Person}
+     */
+    @Override
+    public String getRelatedAppointmentsAsString(Person client) {
+        StringBuilder stringBuilder = new StringBuilder();
+        List<Appointment> relatedAppointment = getRelatedAppointments(client);
+        for (Appointment appointment : relatedAppointment) {
+            stringBuilder.append(appointment + "\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    /**
+     * Returns the Observablelist of {@Code Appointment} that is related to the {@Code Person}
+     */
+    private List<Appointment> getRelatedAppointments(Person client) {
+        return schedule.getRelatedAppointments(client);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -161,6 +184,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Appointment> getFilteredAppointmentList() {
         return filteredAppointments;
+    }
+
+    @Override
+    public void sortFilteredAppointmentList(String sortBy) {
+        if (sortBy.equals("Date")) {
+            schedule.sortAppointmentByDate();
+        } else if (sortBy.equals("Description")) {
+            schedule.sortAppointmentByDescription();
+        }
     }
 
     @Override

@@ -39,11 +39,13 @@ public class AddAppCommandTest {
 
     @Test
     public void execute_validAppointment_returnSuccess() throws Exception {
+        ArrayList<Index> indexes = new ArrayList<>();
+        indexes.add(Index.fromZeroBased(0));
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         Appointment validAppointment = new AppointmentBuilder().build();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
         CommandResult commandResult = new AddAppCommand(
-                Index.fromZeroBased(0),
+                indexes,
                 new Address("vivocity"),
                 LocalDate.of(2021, 01, 01),
                 LocalTime.of(18, 00),
@@ -55,10 +57,12 @@ public class AddAppCommandTest {
 
     @Test
     public void execute_invalidAppointment_returnInvalid() {
+        ArrayList<Index> indexes = new ArrayList<>();
+        indexes.add(Index.fromZeroBased(2));
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
         Command commandResult = new AddAppCommand(
-                Index.fromZeroBased(2),
+                indexes,
                 new Address("vivocity"),
                 LocalDate.of(2021, 01, 01),
                 LocalTime.of(18, 00),
@@ -160,8 +164,18 @@ public class AddAppCommandTest {
         }
 
         @Override
+        public void sortFilteredAppointmentList(String sortBy) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String getRelatedAppointmentsAsString(Person client) {
+            return "";
         }
     }
 

@@ -26,7 +26,7 @@ public class AddAppCommandParser implements Parser<AddAppCommand> {
                         PREFIX_DESCRIPTION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_INDEXES, PREFIX_ADDRESS, PREFIX_DATE, PREFIX_TIME,
-                PREFIX_DESCRIPTION) || argMultimap.getPreamble().isEmpty()) {
+                PREFIX_DESCRIPTION)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddAppCommand.MESSAGE_USAGE));
         }
 
