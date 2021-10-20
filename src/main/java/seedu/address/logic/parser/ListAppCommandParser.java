@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.FindAppCommand;
 import seedu.address.logic.commands.ListAppCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
