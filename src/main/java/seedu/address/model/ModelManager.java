@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -165,13 +166,12 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Appointment> sortFilteredAppointmentList(String SORT_BY) {
-        if (SORT_BY == "Date") {
-            filteredAppointments.sort(Comparator.comparing(Appointment::getDate));
-        } else if (SORT_BY == "Description") {
-            filteredAppointments.sort(Comparator.comparing(Appointment::getDescription));
+    public void sortFilteredAppointmentList(String SORT_BY) {
+        if (SORT_BY.equals("Date")) {
+            schedule.sortAppointmentByDate();
+        } else if (SORT_BY.equals("Description")) {
+            schedule.sortAppointmentByDescription();
         }
-        return filteredAppointments;
     }
 
     @Override

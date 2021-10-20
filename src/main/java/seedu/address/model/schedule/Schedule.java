@@ -72,6 +72,14 @@ public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
         appointmentList.sort(Comparator.comparing(Appointment::getDate));
     }
 
+    public void sortAppointmentByDescription() {
+        appointmentList.sort(Comparator.comparing(Appointment::getDescription));
+    }
+
+    public void sortAppointmentByDate() {
+        appointmentList.sort(Comparator.comparing(Appointment::getDate));
+    }
+
     /**
      * Removes the equivalent Appointment from the list.
      * The Appointment must exist in the list.

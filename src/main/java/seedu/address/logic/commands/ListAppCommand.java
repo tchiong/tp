@@ -4,10 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import seedu.address.model.Model;
-import seedu.address.model.schedule.Appointment;
-import seedu.address.model.schedule.DescriptionContainsKeywordsPredicate;
-
-import java.util.Comparator;
 
 /**
  * List all appointments in PlaceBook to the user.
