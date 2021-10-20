@@ -187,6 +187,15 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void sortFilteredAppointmentList(String sortBy) {
+        if (sortBy.equals("Date")) {
+            schedule.sortAppointmentByDate();
+        } else if (sortBy.equals("Description")) {
+            schedule.sortAppointmentByDescription();
+        }
+    }
+
+    @Override
     public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
         requireNonNull(predicate);
         filteredAppointments.setPredicate(predicate);

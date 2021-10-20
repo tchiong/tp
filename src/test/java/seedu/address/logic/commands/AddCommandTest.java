@@ -172,6 +172,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFilteredAppointmentList(String sortBy) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
             throw new AssertionError("This method should not be called.");
         }

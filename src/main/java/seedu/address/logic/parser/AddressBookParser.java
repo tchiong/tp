@@ -79,7 +79,7 @@ public class AddressBookParser {
             return new DelAppCommandParser().parse(arguments);
 
         case ListAppCommand.COMMAND_WORD:
-            return new ListAppCommand();
+            return new ListAppCommandParser().parse(arguments);
 
         case FindAppCommand.COMMAND_WORD:
             return new FindAppCommandParser().parse(arguments);
