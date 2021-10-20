@@ -58,7 +58,6 @@ public class Appointment {
      * @return true if the client is related and false otherwise.
      */
     public boolean hasClient(Person person) {
-        // to be modified to accommodate list of clients
         return this.clients.contains(person);
     }
 
@@ -91,11 +90,11 @@ public class Appointment {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getClients())
+        builder.append(getDescription())
+                .append("; Clients: ")
+                .append(getClients())
                 .append("; Location: ")
                 .append(getLocation())
-                .append("; Description: ")
-                .append(getDescription())
                 .append("; Date: ")
                 .append(getDate());
 

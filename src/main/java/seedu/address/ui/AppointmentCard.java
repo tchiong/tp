@@ -54,6 +54,7 @@ public class AppointmentCard extends UiPart<Region> {
         UniquePersonList clients = appointment.getClients();
         PersonListPanel clientsDetail = new PersonListPanel(clients.asUnmodifiableObservableList());
         String clientNames = clients.toString();
+
         clientsPane.setText(clientNames);
         clientsPane.setContent(clientsDetail.getRoot());
     }

@@ -28,7 +28,7 @@
                 <Label fx:id="description" text="\$description" styleClass="cell_big_label" />
             </HBox>
 
-            <TitledPane fx:id="clientsPane" styleClass="titled_pane" expanded="false"/>
+            <TitledPane fx:id="clientsPane" styleClass="titled_pane" expanded="false" maxHeight="400"/>
 
             <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
             <Label fx:id="date" styleClass="cell_small_label" text="\$date" />
