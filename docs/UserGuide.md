@@ -144,10 +144,11 @@ Examples:
 
 ### Adding an appointment: `addApp`
 
-Adds an appointment for the specified person with the date (dd-MM-yyyy),
-optional time field (24 hour eg. 1530) and description to the appointment list.
+Adds an appointment for the specified person or persons identified using a list of index(es) with 
+the date (dd-MM-yyyy), optional time field (24 hour eg. 1530) and description to the 
+appointment list.
 
-Format: `addApp INDEX a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
+Format: `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 
 Examples:
 * `addApp 2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`

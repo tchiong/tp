@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEXES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDate;
@@ -17,6 +17,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.schedule.Appointment;
 
 /**
@@ -28,13 +29,13 @@ public class AddAppCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to PlaceBook. "
             + "Parameters: "
-            + "INDEX "
+            + PREFIX_INDEXES + "INDEX,INDEX "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_DATE + "DATE (dd-MM-yyyy) "
-            + PREFIX_TIME + "TIME (hhmm)"
+            + PREFIX_TIME + "TIME (hhmm) "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + "\nExample: " + COMMAND_WORD + " "
+            + PREFIX_INDEXES + "1,2,3 "
             + PREFIX_ADDRESS + "Starbucks @ Raffles City "
             + PREFIX_DATE + "14-12-2021"
             + PREFIX_TIME + "1400"
@@ -42,7 +43,7 @@ public class AddAppCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
 
-    private final Index index;
+    private final List<Index> indexes;
     private final Address location;
     private final LocalDate date;
     private final LocalTime time;
@@ -50,20 +51,20 @@ public class AddAppCommand extends Command {
 
     /**
      * Creates an AddAppCommand
-     * @param index The index of the person to be met during the appointment
+     * @param indexes The indexes of the person to be met during the appointment
      * @param location The location of the appointment
      * @param date The date of the appointment
      * @param time The time of the appointment
      * @param description The description of the appointment
      */
-    public AddAppCommand(Index index, Address location, LocalDate date, LocalTime time, String description) {
-        requireNonNull(index);
+    public AddAppCommand(List<Index> indexes, Address location, LocalDate date, LocalTime time, String description) {
+        requireNonNull(indexes);
         requireNonNull(location);
         requireNonNull(date);
         requireNonNull(time);
         requireNonNull(description);
 
-        this.index = index;
+        this.indexes = indexes;
         this.location = location;
         this.date = date;
         this.time = time;
@@ -74,13 +75,17 @@ public class AddAppCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
+        UniquePersonList clients = new UniquePersonList();
 
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        for (Index index : indexes) {
+            if (index.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+            Person client = lastShownList.get(index.getZeroBased());
+            clients.add(client);
         }
 
-        Person client = lastShownList.get(index.getZeroBased());
-        Appointment newAppointment = new Appointment(client, location, date, time, description);
+        Appointment newAppointment = new Appointment(clients, location, date, time, description);
 
         model.addAppointment(newAppointment);
         return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
@@ -99,7 +104,7 @@ public class AddAppCommand extends Command {
         }
 
         AddAppCommand aa = (AddAppCommand) other;
-        return this.index.equals(aa.index)
+        return this.indexes.equals(aa.indexes)
                 && this.location.equals(aa.location)
                 && this.date.equals(aa.date)
                 && this.time.equals(aa.time)

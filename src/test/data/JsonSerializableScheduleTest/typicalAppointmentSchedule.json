@@ -1,25 +1,24 @@
 {
-  "_comment": "AddressBook save file which contains the same Appointment values as in TypicalAppointment#getTypicalSchedule()",
   "appointments" : [ {
-    "client" : {
+    "clients" : [ {
       "name" : "Alice Pauline",
       "phone" : "94351253",
       "email" : "alice@example.com",
       "address" : "123, Jurong West Ave 6, #08-111",
       "tagged" : [ "friends" ]
-    },
+    } ],
     "location" : "369 Tanjong Rhu",
     "date" : "2021-12-25",
     "description" : "Talk about sales",
     "time" : "21:30"
   }, {
-    "client" : {
+    "clients" : [ {
       "name" : "Carl Kurz",
       "phone" : "95352563",
       "email" : "heinz@example.com",
       "address" : "wall street",
       "tagged" : [ ]
-    },
+    } ],
     "location" : "vivocity",
     "date" : "2021-10-31",
     "description" : "Halloween Sales",

@@ -8,6 +8,8 @@ import static seedu.address.testutil.TypicalPersons.ALICE;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +36,11 @@ public class JsonAdaptedAppointmentTest {
     @Test
     public void toModelType_invalidLocation_returnsAppointment() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(ALICE);
+        List<JsonAdaptedPerson> clients = new ArrayList<>();
+        clients.add(person);
         JsonAdaptedAppointment appointment =
                 new JsonAdaptedAppointment(
-                        person,
+                        clients,
                         INVALID_LOCATION, VALID_DATE, VALID_DESC, VALID_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, appointment::toModelType);
@@ -45,9 +49,11 @@ public class JsonAdaptedAppointmentTest {
     @Test
     public void toModelType_invalidDate_returnsAppointment() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(ALICE);
+        List<JsonAdaptedPerson> clients = new ArrayList<>();
+        clients.add(person);
         JsonAdaptedAppointment appointment =
                 new JsonAdaptedAppointment(
-                        person,
+                        clients,
                         VALID_LOCATION, INVALID_DATE, VALID_DESC, VALID_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalDate.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, appointment::toModelType);
@@ -56,9 +62,11 @@ public class JsonAdaptedAppointmentTest {
     @Test
     public void toModelType_invalidDesc_returnsAppointment() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(ALICE);
+        List<JsonAdaptedPerson> clients = new ArrayList<>();
+        clients.add(person);
         JsonAdaptedAppointment appointment =
                 new JsonAdaptedAppointment(
-                        person,
+                        clients,
                         VALID_LOCATION, VALID_DATE, INVALID_DESC, VALID_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, appointment::toModelType);
@@ -67,9 +75,11 @@ public class JsonAdaptedAppointmentTest {
     @Test
     public void toModelType_invalidTime_returnsAppointment() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(ALICE);
+        List<JsonAdaptedPerson> clients = new ArrayList<>();
+        clients.add(person);
         JsonAdaptedAppointment appointment =
                 new JsonAdaptedAppointment(
-                        person,
+                        clients,
                         VALID_LOCATION, VALID_DATE, VALID_DESC, INVALID_TIME);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, LocalTime.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, appointment::toModelType);
