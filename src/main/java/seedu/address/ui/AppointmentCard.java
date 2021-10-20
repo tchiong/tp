@@ -50,7 +50,7 @@ public class AppointmentCard extends UiPart<Region> {
         address.setText(appointment.getLocation().value);
         date.setText(appointment.getDate().toString());
         time.setText(appointment.getTime().toString());
-        Person client = appointment.getClient();
+        Person client = appointment.getClients().asUnmodifiableObservableList().get(0);
         PersonCard clientDetail = new PersonCard(client, 0);
         // TODO: think about displayIndex when reusing PersonCard
         person.setText(client.getName().fullName);
