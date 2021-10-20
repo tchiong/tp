@@ -89,7 +89,7 @@ public class UiManager implements Ui {
     }
 
     /**
-     * Shows a confirmation dialog to confirm the deletion of an object
+     * Shows a confirmation dialog to confirm the deletion of an object.
      */
     public static boolean showDeleteDialogAndWait(String contentText) {
         final Alert alert = new Alert(AlertType.CONFIRMATION);
