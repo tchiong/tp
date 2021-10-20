@@ -5,11 +5,11 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 
 public class Appointment {
 
-    private final Person client;
+    private final UniquePersonList clients;
     private final Address location;
     private LocalDate date;
     private String description;
@@ -18,16 +18,16 @@ public class Appointment {
     /**
      * Creates an Appointment class with a specified time.
      */
-    public Appointment(Person client, Address location, LocalDate date, LocalTime time, String description) {
-        this.client = client;
+    public Appointment(UniquePersonList clients, Address location, LocalDate date, LocalTime time, String description) {
+        this.clients = clients;
         this.location = location;
         this.date = date;
         this.description = description;
         this.time = time;
     }
 
-    public Person getClient() {
-        return client;
+    public UniquePersonList getClients() {
+        return clients;
     }
 
     public Address getLocation() {
@@ -60,7 +60,7 @@ public class Appointment {
         }
 
         Appointment otherApp = (Appointment) other;
-        return otherApp.getClient().equals(getClient())
+        return otherApp.getClients().equals(getClients())
                 && otherApp.getLocation().equals(getLocation())
                 && otherApp.getDate().equals(getDate())
                 && otherApp.getDescription().equals(getDescription())
@@ -69,13 +69,13 @@ public class Appointment {
 
     @Override
     public int hashCode() {
-        return Objects.hash(client, location, date, time, description);
+        return Objects.hash(clients, location, date, time, description);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getClient())
+        builder.append(getClients())
                 .append("; Location: ")
                 .append(getLocation())
                 .append("; Description: ")
