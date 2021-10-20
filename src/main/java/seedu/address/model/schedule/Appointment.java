@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
 public class Appointment {
@@ -44,6 +46,10 @@ public class Appointment {
 
     public LocalTime getTime() {
         return time;
+    }
+
+    public ObservableList<Person> getClientList() {
+        return clients.asUnmodifiableObservableList();
     }
 
     /**
