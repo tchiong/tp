@@ -164,7 +164,7 @@ Format: `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 * The details of the appointment will be changed accordingly.
 
 Examples:
-* `editApp 2 n/John Doe d/21-12-2021 t/1500 ds/dicuss marketing strategies`
+* `editApp id/2 n/John Doe d/21-12-2021 t/1500 ds/dicuss marketing strategies`
   edits the time of the above created appointment with John Doe to 21-12-2021 at 1500 hrs
 
 ### Deleting an appointment: `delApp`
@@ -228,9 +228,14 @@ _Details coming soon ..._
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**AddApp** | `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION` <br> e.g., `addApp id/2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**DelApp** | `delApp INDEX` <br> e.g., `delApp 1`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**EditApp** | `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
+**ListApp** | `listapp [Date / Duration]`
 **Help** | `help`
+
