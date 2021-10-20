@@ -106,7 +106,7 @@ public interface Model {
     ObservableList<Appointment> getFilteredAppointmentList();
 
     /** Returns a sorted unmodifiable view of the filtered appointment list */
-    void sortFilteredAppointmentList(String SORT_BY);
+    void sortFilteredAppointmentList(String sortBy);
 
     /**
      * Updates the filter of the filtered appointments list to filter by the given {@code predicate}.

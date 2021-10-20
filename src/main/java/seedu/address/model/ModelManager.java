@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -166,10 +164,10 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void sortFilteredAppointmentList(String SORT_BY) {
-        if (SORT_BY.equals("Date")) {
+    public void sortFilteredAppointmentList(String sortBy) {
+        if (sortBy.equals("Date")) {
             schedule.sortAppointmentByDate();
-        } else if (SORT_BY.equals("Description")) {
+        } else if (sortBy.equals("Description")) {
             schedule.sortAppointmentByDescription();
         }
     }

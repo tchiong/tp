@@ -13,17 +13,17 @@ public class ListAppCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "listed all appointments";
 
-    private final String SORT_BY;
+    private final String sortBy;
 
-    public ListAppCommand(String SORT_BY) {
-        this.SORT_BY = SORT_BY;
+    public ListAppCommand(String sortBy) {
+        this.sortBy = sortBy;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
-        model.sortFilteredAppointmentList(SORT_BY);
+        model.sortFilteredAppointmentList(sortBy);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
