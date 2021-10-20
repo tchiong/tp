@@ -150,7 +150,7 @@ optional time field (24 hour eg. 1530) and description to the appointment list.
 Format: `addApp INDEX a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 
 Examples:
-* `addApp n/John Doe a/Starbucks @ Raffles City d/14-12-2021 t/1400 ds/discuss marketing strategies`
+* `addApp 2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
 creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
 
 ### Editing an appointment: `editApp`
@@ -186,6 +186,7 @@ Format: `clear`
 ### Listing all appointments : `listapp`  `[coming soon]`
 
 Show all the appointments in the appointment list currently.
+List is sorted by Date, Time and Description
 
 Format: `listapp`
 

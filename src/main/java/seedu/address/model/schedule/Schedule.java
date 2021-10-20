@@ -2,6 +2,7 @@ package seedu.address.model.schedule;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,6 +67,9 @@ public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
             throw new DuplicateAppointmentException();
         }
         appointmentList.add(toAdd);
+        appointmentList.sort(Comparator.comparing(Appointment::getDescription));
+        appointmentList.sort(Comparator.comparing(Appointment::getTime));
+        appointmentList.sort(Comparator.comparing(Appointment::getDate));
     }
 
     /**
