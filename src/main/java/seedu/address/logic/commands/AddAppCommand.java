@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEXES;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDate;
@@ -33,10 +32,10 @@ public class AddAppCommand extends Command {
             + PREFIX_INDEXES + "INDEXES "
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_DATE + "DATE (dd-MM-yyyy) "
-            + PREFIX_TIME + "TIME (hhmm)"
+            + PREFIX_TIME + "TIME (hhmm) "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
+            + PREFIX_INDEXES + "1,2,3 "
             + PREFIX_ADDRESS + "Starbucks @ Raffles City "
             + PREFIX_DATE + "14-12-2021"
             + PREFIX_TIME + "1400"
