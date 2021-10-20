@@ -156,6 +156,15 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### AddApp feature
+
+#### Implementation
+
+The addApp mechanism is facilitated by `Schedule`. 
+
+`Schedule` contains an Observable List of Appointments that we can add appointments to. These appointments will be
+generated from the inputs entered by the user using the `AddAppCommand` and `AddAppCommandParser`
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation

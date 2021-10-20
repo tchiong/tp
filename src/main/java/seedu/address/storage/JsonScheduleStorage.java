@@ -70,6 +70,7 @@ public class JsonScheduleStorage implements ScheduleStorage {
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
+        logger.info("Saved to " + filePath);
         JsonUtil.saveJsonFile(new JsonSerializableSchedule(schedule), filePath);
     }
 
