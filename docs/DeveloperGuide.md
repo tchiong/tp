@@ -160,10 +160,20 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Implementation
 
+The feature allows users to create an appointment with any number of clients (`Person`), 
+along with a location (`Address`), a Date (`LocalDate`), a Time (`LocalTime`) and a description (`String`).
 The addApp mechanism is facilitated by `Schedule`. 
 
-`Schedule` contains an Observable List of Appointments that we can add appointments to. These appointments will be
+`Schedule` contains an Observable List of `Appointment` that we can add appointments to. These appointments will be
 generated from the inputs entered by the user using the `AddAppCommand` and `AddAppCommandParser`
+
+####Design considerations
+* **Alternative 1 (current choice):** User selects `Person` in `Appointment` through indexes of the displayed list.
+    * Pros: Easy to implement, every `Person` in the displayed list will have a unique index.
+    * Cons: As the user filters the displayed list, the indexes may change and be re-ordered, causing some confusion to the user.
+* **Alternative 2:** User selects `Person` in `Appointment` through the name field in `Person`
+    * Pros: The user will have greater confidence that they are adding the correct person.
+    * Cons: Longer command lines, especially if multiple `Person` added to the same `Appointment`. One spelling mistake in the name will cause an error. There the possibility that there are multiple `Person` with the same name.
 
 ### \[Proposed\] Undo/redo feature
 
