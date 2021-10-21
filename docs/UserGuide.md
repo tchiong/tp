@@ -178,6 +178,23 @@ Format: delApp INDEX
 Examples:
 * `delApp 1`
 
+### Locating appointments by description: `find`
+
+Finds appointments whose descriptions contain any of the given keywords.
+
+Format: `findApp KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `meeting` will match `Meeting`
+* The order of the keywords does not matter. e.g. `Meeting online` will match `online meeting`
+* Only the description is searched.
+* Only full words will be matched e.g. `meet` will not match `meeting`
+* Appointments matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Zoom meeting` will return `Zoom talk`, `offline meeting`
+
+Examples:
+* `findApp zoom` returns `Zoom` and `Zoom meeting`
+* `findApp meeting talk` returns `sales talk`, `urgent meeting`<br>
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the PlaceBook.
@@ -235,6 +252,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **EditApp** | `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**FindApp* | `findApp KEYWORD [MORE KEYWORDS`<br> e.g., `findApp Zoom Meeting`
 **List** | `list`
 **ListApp** | `listapp [Date / Duration]`
 **Help** | `help`
