@@ -252,7 +252,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **EditApp** | `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**FindApp* | `findApp KEYWORD [MORE KEYWORDS`<br> e.g., `findApp Zoom Meeting`
+**FindApp** | `findApp KEYWORD [MORE KEYWORDS`<br> e.g., `findApp Zoom Meeting`
 **List** | `list`
 **ListApp** | `listapp [Date / Duration]`
 **Help** | `help`
