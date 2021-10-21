@@ -164,7 +164,7 @@ Format: `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 * The details of the appointment will be changed accordingly.
 
 Examples:
-* `editApp 2 n/John Doe d/21-12-2021 t/1500 ds/dicuss marketing strategies`
+* `editApp id/2 n/John Doe d/21-12-2021 t/1500 ds/dicuss marketing strategies`
   edits the time of the above created appointment with John Doe to 21-12-2021 at 1500 hrs
 
 ### Deleting an appointment: `delApp`
@@ -177,6 +177,23 @@ Format: delApp INDEX
 
 Examples:
 * `delApp 1`
+
+### Locating appointments by description: `find`
+
+Finds appointments whose descriptions contain any of the given keywords.
+
+Format: `findApp KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `meeting` will match `Meeting`
+* The order of the keywords does not matter. e.g. `Meeting online` will match `online meeting`
+* Only the description is searched.
+* Only full words will be matched e.g. `meet` will not match `meeting`
+* Appointments matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Zoom meeting` will return `Zoom talk`, `offline meeting`
+
+Examples:
+* `findApp zoom` returns `Zoom` and `Zoom meeting`
+* `findApp meeting talk` returns `sales talk`, `urgent meeting`<br>
 
 ### Clearing all entries : `clear`
 
@@ -228,9 +245,15 @@ _Details coming soon ..._
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**AddApp** | `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION` <br> e.g., `addApp id/2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**DelApp** | `delApp INDEX` <br> e.g., `delApp 1`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**EditApp** | `editApp [INDEX] n/NAME d/DATE [ti/TIME] ds/DESCRIPTION`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**FindApp* | `findApp KEYWORD [MORE KEYWORDS`<br> e.g., `findApp Zoom Meeting`
 **List** | `list`
+**ListApp** | `listapp [Date / Duration]`
 **Help** | `help`
+
