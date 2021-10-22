@@ -56,7 +56,7 @@ public class TimePeriod implements Comparable<TimePeriod> {
      * @param moment A LocalDateTime, the given moment.
      * @return A boolean value indicating whether the moment is included.
      */
-    public boolean isIncludingMoment(LocalDateTime moment) {
+    public boolean containsMoment(LocalDateTime moment) {
         return this.startDateTime.isBefore(moment) && this.endDateTime.isAfter(moment);
     }
 
@@ -66,8 +66,8 @@ public class TimePeriod implements Comparable<TimePeriod> {
      * @return A boolean value indicating whether the two {@TimePeriod} has conflicts.
      */
     public boolean hasConflictWith(TimePeriod tp) {
-        return this.isIncludingMoment(tp.startDateTime) || this.isIncludingMoment(tp.endDateTime)
-                || tp.isIncludingMoment(this.startDateTime) || tp.isIncludingMoment(this.endDateTime);
+        return this.containsMoment(tp.startDateTime) || this.containsMoment(tp.endDateTime)
+                || tp.containsMoment(this.startDateTime) || tp.containsMoment(this.endDateTime);
     }
 
     public void setStartDateTime(LocalDateTime newStartDateTime) throws EndTimeBeforeStartTimeException {
