@@ -175,6 +175,26 @@ generated from the inputs entered by the user using the `AddAppCommand` and `Add
     * Pros: The user will have greater confidence that they are adding the correct person.
     * Cons: Longer command lines, especially if multiple `Person` added to the same `Appointment`. One spelling mistake in the name will cause an error. There the possibility that there are multiple `Person` with the same name.
 
+### Delete feature
+
+#### Implementation
+
+The delete feature deletes a person from the storage by specifying an index shown on the display list.
+
+
+
+####Design considerations
+* This will likely be break the current data relations as those appointments that refer to this person will
+no longer be able to query information about this person.
+* Thus, we either:  
+    1. implement a soft delete, which marks the data as 'deleted', so it will not be shown on the person list and keep 
+    showing information about the person in the related appointment.
+    2. remove the person from related appointments and delete the appointment if it has no more related client
+* We chose the second one, and gives a warning message to user when they try to delete. As we think that, it makes 
+little sense in this case to keep the person related to appointments show up event after they deletes the person. Moreover,
+  it makes the code harder to maintain, as we will need to consider whether the person is mark as deleted for every other 
+  query.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
