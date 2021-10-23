@@ -68,7 +68,7 @@ title: User Guide
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.PNG)
+![help message](images/helpMessage.png)
 
 Format: `help`
 
