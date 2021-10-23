@@ -68,7 +68,7 @@ title: User Guide
 
 Shows a message explaning how to access the help page.
 
-![help message](images/helpMessage.png)
+![help message](images/helpMessage.PNG)
 
 Format: `help`
 
@@ -125,8 +125,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find alex` returns `Alex Yeoh`<br>
+  ![result for 'find alex'](images/findAlexResult.png)
 
 ### Deleting a person : `delete`
 
@@ -151,8 +151,9 @@ appointment list.
 Format: `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 
 Examples:
-* `addApp 2 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
-creates an appointment with John Doe on 14-12-2021 at 1400 hrs to discuss marketing strategies
+* `addApp id/1, 3 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
+creates an appointment with Alex Yeoh and Irfan Ibrahim on 14-12-2021 at 1400 hrs to discuss marketing strategies
+![result for 'addApp'](images/addAppResult.png)
 
 ### Editing an appointment: `editApp`
 
@@ -217,11 +218,11 @@ Format: `exit`
 
 ### Saving the data
 
-PlaceBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+PlaceBook data will be saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-PlaceBook data are saved as a JSON file `[JAR file location]/data/placebook.json`. Advanced users are welcome to update data directly by editing that data file.
+PlaceBook data will be saved as a JSON file `[JAR file location]/data/placebook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, PlaceBook will discard all data and start with an empty data file at the next run.
