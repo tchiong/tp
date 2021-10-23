@@ -38,12 +38,33 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_validAppointment_returnSuccess() throws Exception {
+    public void execute_validAppointment_singlePerson_returnSuccess() throws Exception {
         ArrayList<Index> indexes = new ArrayList<>();
         indexes.add(Index.fromZeroBased(0));
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
         Appointment validAppointment = new AppointmentBuilder().build();
         modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
+        CommandResult commandResult = new AddAppCommand(
+                indexes,
+                new Address("vivocity"),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
+                "Halloween Sales").execute(modelStub);
+
+        assertEquals(String.format(AddAppCommand.MESSAGE_SUCCESS, validAppointment), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validAppointment), modelStub.appointmentAdded);
+    }
+
+    @Test
+    public void execute_validAppointment_twoPerson_returnSuccess() throws Exception {
+        ArrayList<Index> indexes = new ArrayList<>();
+        indexes.add(Index.fromZeroBased(0));
+        indexes.add(Index.fromZeroBased(1));
+        ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
+
+        Appointment validAppointment = new AppointmentBuilder().addClient("BOB").build();
+        modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
+        modelStub.addPerson(new PersonBuilder().withName("BOB").build());
         CommandResult commandResult = new AddAppCommand(
                 indexes,
                 new Address("vivocity"),
@@ -71,6 +92,26 @@ public class AddAppCommandTest {
         assertThrows(CommandException.class, ()
             -> commandResult.execute(modelStub));
     }
+
+    @Test
+    public void execute_duplicatePerson_returnInvalid() {
+        ArrayList<Index> indexes = new ArrayList<>();
+        indexes.add(Index.fromZeroBased(0));
+        indexes.add(Index.fromZeroBased(0));
+        ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
+        modelStub.addPerson(new PersonBuilder().withName("ALICE").build());
+        modelStub.addPerson(new PersonBuilder().withName("BOB").build());
+        Command commandResult = new AddAppCommand(
+                indexes,
+                new Address("vivocity"),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
+                "Halloween Sales");
+
+        assertThrows(CommandException.class, ()
+                -> commandResult.execute(modelStub));
+    }
+
 
     private class ModelStub implements Model {
         @Override
