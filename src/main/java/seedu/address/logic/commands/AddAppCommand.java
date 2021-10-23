@@ -18,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.schedule.Appointment;
 
 /**
@@ -82,7 +83,11 @@ public class AddAppCommand extends Command {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
             Person client = lastShownList.get(index.getZeroBased());
-            clients.add(client);
+            try {
+                clients.add(client);
+            } catch (DuplicatePersonException e) {
+                throw new CommandException(Messages.MESSAGE_APPOINTMENTS_DUPLICATE_PERSON_ADDED);
+            }
         }
 
         Appointment newAppointment = new Appointment(clients, location, date, time, description);

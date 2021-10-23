@@ -36,12 +36,12 @@ public class ScheduleTest {
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
+    public void remove_appointmentDoesNotExist_throwsAppointmentNotFoundException() {
         assertThrows(AppointmentNotFoundException.class, () -> schedule.deleteAppointment(ALICE_APPOINTMENT));
     }
 
     @Test
-    public void remove_existingPerson_removesPerson() {
+    public void remove_existingAppointment_removesAppointment() {
         schedule.addAppointment(ALICE_APPOINTMENT);
         schedule.deleteAppointment(ALICE_APPOINTMENT);
         Schedule expectedSchedule = new Schedule();

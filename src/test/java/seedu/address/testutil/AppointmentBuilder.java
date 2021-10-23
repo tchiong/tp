@@ -51,7 +51,7 @@ public class AppointmentBuilder {
     }
 
     /**
-     * Sets the {@code client} of the {@code Appointment} that we are building.
+     * Sets the {@code clients} of the {@code Appointment} that we are building.
      */
     public AppointmentBuilder withClient(Person client) {
         UniquePersonList clients = new UniquePersonList();
@@ -61,12 +61,28 @@ public class AppointmentBuilder {
     }
 
     /**
-     * Sets the {@code client} of the {@code Appointment} that we are building.
+     * Sets the {@code clients} of the {@code Appointment} that we are building.
      */
     public AppointmentBuilder withClient(String clientName) {
         UniquePersonList clients = new UniquePersonList();
         clients.add(new PersonBuilder().withName(clientName).build());
         this.clients = clients;
+        return this;
+    }
+
+    /**
+     * Adds a {@code Person} to the {@code clients} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder addClient(Person client) {
+        this.clients.add(client);
+        return this;
+    }
+
+    /**
+     * Adds a {@code Person} to the {@code clients} of the {@code Appointment} that we are building.
+     */
+    public AppointmentBuilder addClient(String clientName) {
+        this.clients.add(new PersonBuilder().withName(clientName).build());
         return this;
     }
 
