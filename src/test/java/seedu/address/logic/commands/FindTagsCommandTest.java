@@ -9,7 +9,6 @@ import static seedu.address.testutil.TypicalAppointment.getTypicalSchedule;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.DANIEL;
-
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
