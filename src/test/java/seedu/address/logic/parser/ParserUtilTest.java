@@ -29,6 +29,8 @@ public class ParserUtilTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_DATE = "2021-30";
+    private static final String INVALID_TIME = "10";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -208,8 +210,27 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseDate_invalidDate_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseDate(INVALID_DATE));
+    }
+
+    @Test
+    public void parseDate_null_throwsDateTimeParseException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseDate(null));
+    }
+
+    @Test
     public void parseTime_validValueWithoutWhitespace_returnsLocalTime() throws Exception {
         LocalTime expectedTime = LocalTime.parse(VALID_TIME, TIME_FORMATTER);
         assertEquals(expectedTime, ParserUtil.parseTime(VALID_TIME));
+    }
+
+    @Test public void parseTime_invalidTime_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTime(INVALID_TIME));
+    }
+
+    @Test
+    public void parseTime_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTime(null));
     }
 }
