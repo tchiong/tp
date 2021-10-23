@@ -12,5 +12,6 @@ public class Messages {
     public static final String MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX =
             "The appointment index provided is invalid";
     public static final String MESSAGE_APPOINTMENTS_LISTED_OVERVIEW = "%1$d appointments listed!";
+    public static final String MESSAGE_APPOINTMENTS_DUPLICATE_PERSON_ADDED = "Duplicated Person not allowed!";
 
 }
