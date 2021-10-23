@@ -38,7 +38,7 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_validAppointment_singlePerson_returnSuccess() throws Exception {
+    public void execute_validAppointmentSinglePerson_returnSuccess() throws Exception {
         ArrayList<Index> indexes = new ArrayList<>();
         indexes.add(Index.fromZeroBased(0));
         ModelStubAcceptingAppointmentAdded modelStub = new ModelStubAcceptingAppointmentAdded();
@@ -56,7 +56,7 @@ public class AddAppCommandTest {
     }
 
     @Test
-    public void execute_validAppointment_twoPerson_returnSuccess() throws Exception {
+    public void execute_validAppointmentTwoPerson_returnSuccess() throws Exception {
         ArrayList<Index> indexes = new ArrayList<>();
         indexes.add(Index.fromZeroBased(0));
         indexes.add(Index.fromZeroBased(1));
@@ -109,7 +109,7 @@ public class AddAppCommandTest {
                 "Halloween Sales");
 
         assertThrows(CommandException.class, ()
-                -> commandResult.execute(modelStub));
+            -> commandResult.execute(modelStub));
     }
 
 
