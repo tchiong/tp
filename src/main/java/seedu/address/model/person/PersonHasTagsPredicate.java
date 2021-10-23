@@ -22,10 +22,8 @@ public class PersonHasTagsPredicate implements Predicate<Person> {
         tagArray = person.getTags().toArray(tagArray);
         for (Tag tag : tagArray) {
             String tagName = tag.getTagName();
-            for (String keyword : keywords) {
-                if (StringUtil.containsWordIgnoreCase(keyword, tagName)) {
-                    return true;
-                }
+            if (keywords.stream().anyMatch(keyword -> StringUtil.containsWordIgnoreCase(keyword, tagName))) {
+                return true;
             }
         }
         return false;
