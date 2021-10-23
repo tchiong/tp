@@ -126,6 +126,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex` returns `Alex Yeoh`<br>
+  
   ![result for 'find alex'](images/findAlexResult.png)
 
 ### Deleting a person : `delete`
@@ -153,6 +154,7 @@ Format: `addApp id/1[,2,3...] a/ADDRESS d/DATE ti/TIME ds/DESCRIPTION`
 Examples:
 * `addApp id/1, 3 a/Starbucks @ Raffles City d/14-12-2021 ti/1400 ds/discuss marketing strategies`
 creates an appointment with Alex Yeoh and Irfan Ibrahim on 14-12-2021 at 1400 hrs to discuss marketing strategies
+
 ![result for 'addApp'](images/addAppResult.png)
 
 ### Editing an appointment: `editApp`
