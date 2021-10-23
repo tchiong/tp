@@ -26,6 +26,14 @@ public class AppointmentTest {
         UniquePersonList testClients = new UniquePersonList();
         testClients.add(ALICE);
 
+        // same attributes, different object
+        Appointment similarAliceAppointment = new Appointment(testClients,
+                new Address("369 Tanjong Rhu"),
+                LocalDate.of(2021, 12, 25),
+                LocalTime.of(21, 30),
+                "Talk about sales");
+        assertTrue(ALICE_APPOINTMENT.equals(similarAliceAppointment));
+
         // same client, different attributes
         Appointment editedAliceAppointment = new Appointment(testClients,
                 new Address("369 Geylang Street"),

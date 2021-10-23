@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedAppointment.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAppointment.ALICE_APPOINTMENT;
+import static seedu.address.testutil.TypicalAppointment.ALICE_CARL_APPOINTMENT;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 
 import java.time.LocalDate;
@@ -28,9 +29,15 @@ public class JsonAdaptedAppointmentTest {
     private static final String VALID_DESC = "Testing";
 
     @Test
-    public void toModelType_validAppointmentDetails_returnsAppointment() throws Exception {
-        JsonAdaptedAppointment person = new JsonAdaptedAppointment(ALICE_APPOINTMENT);
-        assertEquals(ALICE_APPOINTMENT, person.toModelType());
+    public void toModelType_validSinglePersonAppointmentDetails_returnsAppointment() throws Exception {
+        JsonAdaptedAppointment appointment = new JsonAdaptedAppointment(ALICE_APPOINTMENT);
+        assertEquals(ALICE_APPOINTMENT, appointment.toModelType());
+    }
+
+    @Test
+    public void toModelType_validMultiplePersonAppointmentDetails_returnsAppointment() throws Exception {
+        JsonAdaptedAppointment appointment = new JsonAdaptedAppointment(ALICE_CARL_APPOINTMENT);
+        assertEquals(ALICE_CARL_APPOINTMENT, appointment.toModelType());
     }
 
     @Test
