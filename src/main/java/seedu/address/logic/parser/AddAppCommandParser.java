@@ -22,8 +22,8 @@ public class AddAppCommandParser implements Parser<AddAppCommand> {
     @Override
     public AddAppCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_INDEXES, PREFIX_ADDRESS, PREFIX_STARTDATETIME, PREFIX_ENDDATETIME,
-                        PREFIX_DESCRIPTION);
+                ArgumentTokenizer.tokenize(args, PREFIX_INDEXES, PREFIX_ADDRESS, PREFIX_STARTDATETIME,
+                        PREFIX_ENDDATETIME, PREFIX_DESCRIPTION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_INDEXES, PREFIX_ADDRESS, PREFIX_STARTDATETIME, PREFIX_ENDDATETIME,
                 PREFIX_DESCRIPTION)) {

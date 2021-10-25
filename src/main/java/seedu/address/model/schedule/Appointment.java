@@ -1,8 +1,5 @@
 package seedu.address.model.schedule;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 import javafx.collections.ObservableList;
