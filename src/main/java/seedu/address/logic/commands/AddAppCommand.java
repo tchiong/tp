@@ -87,7 +87,6 @@ public class AddAppCommand extends Command {
             }
         }
 
-
         Appointment newAppointment = new Appointment(clients, location, timePeriod, description);
 
         model.addAppointment(newAppointment);

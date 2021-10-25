@@ -257,7 +257,7 @@ public class AddAppCommandTest {
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingAppointmentAdded extends AddAppCommandTest.ModelStub {
-        final ArrayList<Appointment> appointmentAdded = new ArrayList<>();
+        final ObservableList<Appointment> appointmentAdded = FXCollections.observableArrayList();
         final ObservableList<Person> personsAdded = FXCollections.observableArrayList();
 
         @Override
@@ -281,6 +281,11 @@ public class AddAppCommandTest {
         public void addAppointment(Appointment a) {
             requireNonNull(a);
             appointmentAdded.add(a);
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            return appointmentAdded;
         }
 
         @Override
