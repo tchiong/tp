@@ -1,7 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INDEXES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,7 +20,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.schedule.Appointment;
-import seedu.address.model.schedule.TimePeriod;
 
 /**
  * Creates an appointment with an existing person in PlaceBook
@@ -29,39 +32,43 @@ public class AddAppCommand extends Command {
             + "Parameters: "
             + PREFIX_INDEXES + "INDEX,INDEX "
             + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_STARTDATETIME + "DATE (dd-MM-yyyy), TIME (HHmm) "
-            + PREFIX_ENDDATETIME + "DATE (dd-MM-yyyy), TIME (HHmm) "
+            + PREFIX_DATE + "DATE (dd-MM-yyyy) "
+            + PREFIX_TIME + "TIME (hhmm) "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
             + "\nExample: " + COMMAND_WORD + " "
             + PREFIX_INDEXES + "1,2,3 "
             + PREFIX_ADDRESS + "Starbucks @ Raffles City "
-            + PREFIX_STARTDATETIME + "2021-01-01 14:00 "
-            + PREFIX_ENDDATETIME + "2021-01-01 15:00 "
+            + PREFIX_DATE + "14-12-2021"
+            + PREFIX_TIME + "1400"
             + PREFIX_DESCRIPTION + "discuss marketing strategies";
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
 
     private final List<Index> indexes;
     private final Address location;
-    private final TimePeriod timePeriod;
+    private final LocalDate date;
+    private final LocalTime time;
     private final String description;
 
     /**
      * Creates an AddAppCommand
      * @param indexes The indexes of the person to be met during the appointment
      * @param location The location of the appointment
-     * @param timePeriod the Time period of the appointment
+     * @param date The date of the appointment
+     * @param time The time of the appointment
      * @param description The description of the appointment
      */
-    public AddAppCommand(List<Index> indexes, Address location, TimePeriod timePeriod, String description) {
+    public AddAppCommand(List<Index> indexes, Address location, LocalDate date, LocalTime time, String description) {
         requireNonNull(indexes);
         requireNonNull(location);
-        requireNonNull(timePeriod);
+        requireNonNull(date);
+        requireNonNull(time);
         requireNonNull(description);
 
         this.indexes = indexes;
         this.location = location;
-        this.timePeriod = timePeriod;
+        this.date = date;
+        this.time = time;
         this.description = description;
     }
 
@@ -85,12 +92,12 @@ public class AddAppCommand extends Command {
         }
 
         for (Appointment app : lastShownAppList) {
-            if (app.getTimePeriod().hasConflictWith(this.timePeriod)) {
+            if (app.getDate().equals(date) && app.getTime().equals(time)) {
                 throw new CommandException(Messages.MESSAGE_APPOINTMENTS_DUPLICATE_APPOINTMENT_ADDED);
             }
         }
 
-        Appointment newAppointment = new Appointment(clients, location, timePeriod, description);
+        Appointment newAppointment = new Appointment(clients, location, date, time, description);
 
         model.addAppointment(newAppointment);
         return new CommandResult(String.format(MESSAGE_SUCCESS, newAppointment));
@@ -111,7 +118,8 @@ public class AddAppCommand extends Command {
         AddAppCommand aa = (AddAppCommand) other;
         return this.indexes.equals(aa.indexes)
                 && this.location.equals(aa.location)
-                && this.timePeriod.equals(aa.timePeriod)
+                && this.date.equals(aa.date)
+                && this.time.equals(aa.time)
                 && this.description.equals(aa.description);
     }
 }

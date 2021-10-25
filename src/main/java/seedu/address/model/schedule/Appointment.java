@@ -1,6 +1,5 @@
 package seedu.address.model.schedule;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -14,18 +13,19 @@ public class Appointment {
 
     private final UniquePersonList clients;
     private final Address location;
-    private TimePeriod timePeriod;
+    private LocalDate date;
     private String description;
-
+    private LocalTime time;
 
     /**
      * Creates an Appointment class with a specified time.
      */
-    public Appointment(UniquePersonList clients, Address location, TimePeriod timePeriod, String description) {
+    public Appointment(UniquePersonList clients, Address location, LocalDate date, LocalTime time, String description) {
         this.clients = clients;
         this.location = location;
-        this.timePeriod = timePeriod;
+        this.date = date;
         this.description = description;
+        this.time = time;
     }
 
     public UniquePersonList getClients() {
@@ -36,12 +36,16 @@ public class Appointment {
         return location;
     }
 
-    public TimePeriod getTimePeriod() {
-        return timePeriod;
+    public LocalDate getDate() {
+        return date;
     }
 
     public String getDescription() {
         return description;
+    }
+
+    public LocalTime getTime() {
+        return time;
     }
 
     public ObservableList<Person> getClientList() {
@@ -73,13 +77,14 @@ public class Appointment {
         Appointment otherApp = (Appointment) other;
         return otherApp.getClients().equals(getClients())
                 && otherApp.getLocation().equals(getLocation())
-                && otherApp.getTimePeriod().equals(getTimePeriod())
-                && otherApp.getDescription().equals(getDescription());
+                && otherApp.getDate().equals(getDate())
+                && otherApp.getDescription().equals(getDescription())
+                && otherApp.getTime().equals(getTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(clients, location, timePeriod, description);
+        return Objects.hash(clients, location, date, time, description);
     }
 
     @Override
@@ -90,8 +95,13 @@ public class Appointment {
                 .append(getClients())
                 .append("; Location: ")
                 .append(getLocation())
-                .append("; Time Period: ")
-                .append(getTimePeriod());
+                .append("; Date: ")
+                .append(getDate());
+
+        if (!(getTime() == null)) {
+            builder.append("; Time: ")
+                    .append(getTime());
+        }
 
         return builder.toString();
     }

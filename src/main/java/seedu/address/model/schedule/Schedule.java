@@ -70,15 +70,16 @@ public class Schedule implements Iterable<Appointment>, ReadOnlySchedule {
         }
         appointmentList.add(toAdd);
         appointmentList.sort(Comparator.comparing(Appointment::getDescription));
-        appointmentList.sort(Comparator.comparing(Appointment::getTimePeriod));
+        appointmentList.sort(Comparator.comparing(Appointment::getTime));
+        appointmentList.sort(Comparator.comparing(Appointment::getDate));
     }
 
     public void sortAppointmentByDescription() {
         appointmentList.sort(Comparator.comparing(Appointment::getDescription));
     }
 
-    public void sortAppointmentByTimePeriod() {
-        appointmentList.sort(Comparator.comparing(Appointment::getTimePeriod));
+    public void sortAppointmentByDate() {
+        appointmentList.sort(Comparator.comparing(Appointment::getDate));
     }
 
     /**

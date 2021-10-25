@@ -6,11 +6,9 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -28,7 +26,6 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Person;
 import seedu.address.model.schedule.Appointment;
-import seedu.address.model.schedule.TimePeriod;
 import seedu.address.testutil.AppointmentBuilder;
 import seedu.address.testutil.PersonBuilder;
 
@@ -37,7 +34,7 @@ public class AddAppCommandTest {
     @Test
     public void constructor_nullAppointment_throwsNullPointerException() {
         assertThrows(NullPointerException.class, ()
-            -> new AddAppCommand(null, null, null, null));
+            -> new AddAppCommand(null, null, null, null, null));
     }
 
     @Test
@@ -50,8 +47,8 @@ public class AddAppCommandTest {
         CommandResult commandResult = new AddAppCommand(
                 indexes,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales").execute(modelStub);
 
         assertEquals(String.format(AddAppCommand.MESSAGE_SUCCESS, validAppointment), commandResult.getFeedbackToUser());
@@ -71,8 +68,8 @@ public class AddAppCommandTest {
         CommandResult commandResult = new AddAppCommand(
                 indexes,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales").execute(modelStub);
 
         assertEquals(String.format(AddAppCommand.MESSAGE_SUCCESS, validAppointment), commandResult.getFeedbackToUser());
@@ -88,8 +85,8 @@ public class AddAppCommandTest {
         Command commandResult = new AddAppCommand(
                 indexes,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales");
 
         assertThrows(CommandException.class, ()
@@ -107,8 +104,8 @@ public class AddAppCommandTest {
         Command commandResult = new AddAppCommand(
                 indexes,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales");
 
         assertThrows(CommandException.class, ()
@@ -127,14 +124,14 @@ public class AddAppCommandTest {
         Command initialCommand = new AddAppCommand(
                 indexOne,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales");
         Command commandResult = new AddAppCommand(
                 indexTwo,
                 new Address("vivocity"),
-                new TimePeriod(LocalDateTime.of(2021, 1, 1, 10, 0),
-                        LocalDateTime.of(2021, 1, 2, 10, 0)),
+                LocalDate.of(2021, 01, 01),
+                LocalTime.of(18, 00),
                 "Halloween Sales");
         try {
             initialCommand.execute(modelTester);
