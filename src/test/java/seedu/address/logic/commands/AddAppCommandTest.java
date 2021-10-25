@@ -133,14 +133,14 @@ public class AddAppCommandTest {
                 LocalDate.of(2021, 01, 01),
                 LocalTime.of(18, 00),
                 "Halloween Sales");
-        try{
+        try {
             initialCommand.execute(modelTester);
         } catch (CommandException e) {
-
+            throw new AssertionError("This method should not be called.");
         }
 
         assertThrows(CommandException.class, ()
-                -> commandResult.execute(modelTester));
+            -> commandResult.execute(modelTester));
     }
 
 
